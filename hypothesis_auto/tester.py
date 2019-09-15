@@ -1,6 +1,6 @@
 from typing import Callable, Optional, Tuple, Union, get_type_hints
 
-from hypothesis.strategies import builds
+from hypothesis.strategies import SearchStrategy, builds, just
 from pydantic import BaseModel
 
 
@@ -17,7 +17,8 @@ def auto_test(
 
     By default auto_test uses type annotations to automatically decide on strategies via the
     hypothesis builds strategy. You can override individual strategies by passing them in under
-    the corresponding *arg or **kwarg.
+    the corresponding *arg or **kwarg OR you can pass in specific values that must be used for
+    certain parameters while letting others be auto generated.
 
     All *arg and **kwargs are automatically passed along to hypothesis build to enable this.
 
@@ -31,7 +32,13 @@ def auto_test(
       return value does not match expectations
     """
     return_type = get_type_hints(_auto_function).get("return", None)
-    strategy = builds(_auto_function, *args, **kwargs)
+
+    strategy_args = [arg if isinstance(arg, SearchStrategy) else just(arg) for arg in args]
+    strategy_kwargs = {
+        name: value if isinstance(value, SearchStrategy) else just(value)
+        for name, value in kwargs.items()
+    }
+    strategy = builds(_auto_function, *strategy_args, **strategy_kwargs)
 
     for _ in range(_auto_runs):
         try:
