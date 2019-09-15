@@ -1,7 +1,7 @@
 from typing import Callable, Optional, Tuple, Union, get_type_hints
 
 from hypothesis.strategies import builds
-from pydantic import create_model
+from pydantic import BaseModel
 
 
 def auto_test(
@@ -31,7 +31,6 @@ def auto_test(
       return value does not match expectations
     """
     return_type = get_type_hints(_auto_function).get("return", None)
-    function_model_name = getattr(_auto_function, "__name__", "ReturnVerification")
     strategy = builds(_auto_function, *args, **kwargs)
 
     for _ in range(_auto_runs):
@@ -41,6 +40,10 @@ def auto_test(
             continue
 
         if return_type:
-            create_model(function_model_name, returns=return_type)(returns=result)
+
+            class ReturnModel(BaseModel):
+                __annotations__ = {"returns": return_type}
+
+            ReturnModel(returns=result)
         if _auto_verify:
             _auto_verify(result)
