@@ -30,3 +30,11 @@ portray = "^1.2.0"
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 
+[tool.portray]
+modules = ["hypothesis_auto"]
+
+[tool.portray.mkdocs.theme]
+favicon = "art/logo.png"
+logo = "art/logo.png"
+name = "material"
+palette = {primary = "teal", accent = "cyan"}
