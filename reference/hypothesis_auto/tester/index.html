@@ -463,11 +463,15 @@
 
 <span class="sd">    hypothesis builds strategy. You can override individual strategies by passing them in under</span>
 
-<span class="sd">    the corresponding *arg or **kwarg OR you can pass in specific values that must be used for</span>
+<span class="sd">    the corresponding `*arg` or `**kwarg` OR you can pass in specific values that must be used for</span>
 
 <span class="sd">    certain parameters while letting others be auto generated.</span>
 
-<span class="sd">    All *arg and **kwargs are automatically passed along to hypothesis build to enable this.</span>
+<span class="sd">    All `*arg` and `**kwargs` are automatically passed along to</span>
+
+<span class="sd">    `hypothesis.strategies.builds` to enable this. Non strategies are automatically converted</span>
+
+<span class="sd">    to strategies using `hypothesis.strategies.just`.</span>
 
 <span class="sd">    Except for the following options:</span>
 
@@ -475,13 +479,13 @@
 
 <span class="sd">      and will no be considered a test error.</span>
 
-<span class="sd">    - *_auto_runs*: Number of strategies combinations to run the given function against</span>
+<span class="sd">    - *_auto_runs*: Number of strategies combinations to run the given function against.</span>
 
-<span class="sd">    - *_auto_verify*: An optional callback function that will be called to allow custom verification</span>
+<span class="sd">    - *_auto_verify*: An optional callback function that will be called to allow custom verification.</span>
 
 <span class="sd">      of the functions return value. The callback function should raise an AssertionError if the</span>
 
-<span class="sd">      return value does not match expectations</span>
+<span class="sd">      return value does not match expectations.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -555,17 +559,19 @@
 type hinted callable, including return type verification.</p>
 <p>By default auto_test uses type annotations to automatically decide on strategies via the
 hypothesis builds strategy. You can override individual strategies by passing them in under
-the corresponding <em>arg or </em>*kwarg OR you can pass in specific values that must be used for
+the corresponding <code>*arg</code> or <code>**kwarg</code> OR you can pass in specific values that must be used for
 certain parameters while letting others be auto generated.</p>
-<p>All <em>arg and </em>*kwargs are automatically passed along to hypothesis build to enable this.</p>
+<p>All <code>*arg</code> and <code>**kwargs</code> are automatically passed along to
+<code>hypothesis.strategies.builds</code> to enable this. Non strategies are automatically converted
+to strategies using <code>hypothesis.strategies.just</code>.</p>
 <p>Except for the following options:</p>
 <ul>
 <li><em>_auto_allow_exceptions</em>: A tuple of exceptions that are acceptable for the function to raise
   and will no be considered a test error.</li>
-<li><em>_auto_runs</em>: Number of strategies combinations to run the given function against</li>
-<li><em>_auto_verify</em>: An optional callback function that will be called to allow custom verification
+<li><em>_auto_runs</em>: Number of strategies combinations to run the given function against.</li>
+<li><em>_auto_verify</em>: An optional callback function that will be called to allow custom verification.
   of the functions return value. The callback function should raise an AssertionError if the
-  return value does not match expectations</li>
+  return value does not match expectations.</li>
 </ul>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">auto_test</span><span class="ss">(</span>
 
@@ -591,11 +597,15 @@ certain parameters while letting others be auto generated.</p>
 
     <span class="nv">hypothesis</span> <span class="nv">builds</span> <span class="nv">strategy</span>. <span class="nv">You</span> <span class="nv">can</span> <span class="nv">override</span> <span class="nv">individual</span> <span class="nv">strategies</span> <span class="nv">by</span> <span class="nv">passing</span> <span class="nv">them</span> <span class="nv">in</span> <span class="nv">under</span>
 
-    <span class="nv">the</span> <span class="nv">corresponding</span> <span class="o">*</span><span class="nv">arg</span> <span class="nv">or</span> <span class="o">**</span><span class="nv">kwarg</span> <span class="nv">OR</span> <span class="nv">you</span> <span class="nv">can</span> <span class="nv">pass</span> <span class="nv">in</span> <span class="nv">specific</span> <span class="nv">values</span> <span class="nv">that</span> <span class="nv">must</span> <span class="nv">be</span> <span class="nv">used</span> <span class="k">for</span>
+    <span class="nv">the</span> <span class="nv">corresponding</span> `<span class="o">*</span><span class="nv">arg</span>` <span class="nv">or</span> `<span class="o">**</span><span class="nv">kwarg</span>` <span class="nv">OR</span> <span class="nv">you</span> <span class="nv">can</span> <span class="nv">pass</span> <span class="nv">in</span> <span class="nv">specific</span> <span class="nv">values</span> <span class="nv">that</span> <span class="nv">must</span> <span class="nv">be</span> <span class="nv">used</span> <span class="k">for</span>
 
     <span class="nv">certain</span> <span class="nv">parameters</span> <span class="k">while</span> <span class="nv">letting</span> <span class="nv">others</span> <span class="nv">be</span> <span class="nv">auto</span> <span class="nv">generated</span>.
 
-    <span class="nv">All</span> <span class="o">*</span><span class="nv">arg</span> <span class="nv">and</span> <span class="o">**</span><span class="nv">kwargs</span> <span class="nv">are</span> <span class="nv">automatically</span> <span class="nv">passed</span> <span class="nv">along</span> <span class="nv">to</span> <span class="nv">hypothesis</span> <span class="nv">build</span> <span class="nv">to</span> <span class="nv">enable</span> <span class="nv">this</span>.
+    <span class="nv">All</span> `<span class="o">*</span><span class="nv">arg</span>` <span class="nv">and</span> `<span class="o">**</span><span class="nv">kwargs</span>` <span class="nv">are</span> <span class="nv">automatically</span> <span class="nv">passed</span> <span class="nv">along</span> <span class="nv">to</span>
+
+    `<span class="nv">hypothesis</span>.<span class="nv">strategies</span>.<span class="nv">builds</span>` <span class="nv">to</span> <span class="nv">enable</span> <span class="nv">this</span>. <span class="nv">Non</span> <span class="nv">strategies</span> <span class="nv">are</span> <span class="nv">automatically</span> <span class="nv">converted</span>
+
+    <span class="nv">to</span> <span class="nv">strategies</span> <span class="nv">using</span> `<span class="nv">hypothesis</span>.<span class="nv">strategies</span>.<span class="nv">just</span>`.
 
     <span class="nv">Except</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">following</span> <span class="nv">options</span>:
 
@@ -603,13 +613,13 @@ certain parameters while letting others be auto generated.</p>
 
       <span class="nv">and</span> <span class="nv">will</span> <span class="nv">no</span> <span class="nv">be</span> <span class="nv">considered</span> <span class="nv">a</span> <span class="nv">test</span> <span class="nv">error</span>.
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">_auto_runs</span><span class="o">*</span>: <span class="nv">Number</span> <span class="nv">of</span> <span class="nv">strategies</span> <span class="nv">combinations</span> <span class="nv">to</span> <span class="nv">run</span> <span class="nv">the</span> <span class="nv">given</span> <span class="nv">function</span> <span class="nv">against</span>
+    <span class="o">-</span> <span class="o">*</span><span class="nv">_auto_runs</span><span class="o">*</span>: <span class="nv">Number</span> <span class="nv">of</span> <span class="nv">strategies</span> <span class="nv">combinations</span> <span class="nv">to</span> <span class="nv">run</span> <span class="nv">the</span> <span class="nv">given</span> <span class="nv">function</span> <span class="nv">against</span>.
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">_auto_verify</span><span class="o">*</span>: <span class="nv">An</span> <span class="nv">optional</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">that</span> <span class="nv">will</span> <span class="nv">be</span> <span class="nv">called</span> <span class="nv">to</span> <span class="nv">allow</span> <span class="nv">custom</span> <span class="nv">verification</span>
+    <span class="o">-</span> <span class="o">*</span><span class="nv">_auto_verify</span><span class="o">*</span>: <span class="nv">An</span> <span class="nv">optional</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">that</span> <span class="nv">will</span> <span class="nv">be</span> <span class="nv">called</span> <span class="nv">to</span> <span class="nv">allow</span> <span class="nv">custom</span> <span class="nv">verification</span>.
 
       <span class="nv">of</span> <span class="nv">the</span> <span class="nv">functions</span> <span class="k">return</span> <span class="nv">value</span>. <span class="nv">The</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">should</span> <span class="nv">raise</span> <span class="nv">an</span> <span class="nv">AssertionError</span> <span class="k">if</span> <span class="nv">the</span>
 
-      <span class="k">return</span> <span class="nv">value</span> <span class="nv">does</span> <span class="nv">not</span> <span class="nv">match</span> <span class="nv">expectations</span>
+      <span class="k">return</span> <span class="nv">value</span> <span class="nv">does</span> <span class="nv">not</span> <span class="nv">match</span> <span class="nv">expectations</span>.
 
     <span class="s2">&quot;&quot;&quot;</span>
 
