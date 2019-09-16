@@ -19,19 +19,21 @@ def auto_test(
 
     By default auto_test uses type annotations to automatically decide on strategies via the
     hypothesis builds strategy. You can override individual strategies by passing them in under
-    the corresponding *arg or **kwarg OR you can pass in specific values that must be used for
+    the corresponding `*arg` or `**kwarg` OR you can pass in specific values that must be used for
     certain parameters while letting others be auto generated.
 
-    All *arg and **kwargs are automatically passed along to hypothesis build to enable this.
+    All `*arg` and `**kwargs` are automatically passed along to
+    `hypothesis.strategies.builds` to enable this. Non strategies are automatically converted
+    to strategies using `hypothesis.strategies.just`.
 
     Except for the following options:
 
     - *_auto_allow_exceptions*: A tuple of exceptions that are acceptable for the function to raise
       and will no be considered a test error.
-    - *_auto_runs*: Number of strategies combinations to run the given function against
-    - *_auto_verify*: An optional callback function that will be called to allow custom verification
+    - *_auto_runs*: Number of strategies combinations to run the given function against.
+    - *_auto_verify*: An optional callback function that will be called to allow custom verification.
       of the functions return value. The callback function should raise an AssertionError if the
-      return value does not match expectations
+      return value does not match expectations.
     """
     return_type = get_type_hints(_auto_function).get("return", None)
 
