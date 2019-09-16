@@ -1,3 +1,5 @@
+from inspect import isfunction
+from types import ModuleType
 from typing import Callable, Optional, Tuple, Union, get_type_hints
 
 from hypothesis.strategies import builds
@@ -44,3 +46,12 @@ def auto_test(
             create_model(function_model_name, returns=return_type)(returns=result)
         if _auto_verify:
             _auto_verify(result)
+
+
+def auto_test_module(module: ModuleType) -> None:
+    """Attempts to automatically test every public function within a module."""
+    for attribute_name in dir(module):
+        if not attribute_name.startswith("_"):
+            attribute = getattr(module, attribute_name)
+            if isfunction(attribute):
+                auto_test(attribute)

@@ -1,7 +1,9 @@
 import pytest
 from hypothesis import strategies
 
-from hypothesis_auto import auto_test
+from hypothesis_auto import auto_test, auto_test_module
+
+from . import example_module
 
 
 def my_function(number_1: int, number_2: int) -> int:
@@ -25,3 +27,7 @@ def test_auto_test():
     with pytest.raises(ValueError):
         auto_test(my_raise_function)
     auto_test(my_raise_function, _auto_allow_exceptions=(ValueError,))
+
+
+def test_auto_test_module():
+    auto_test_module(example_module)
