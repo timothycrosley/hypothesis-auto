@@ -1,4 +1,4 @@
-from inspect import isfunction
+from inspect import isfunction, signature
 from types import ModuleType
 from typing import Callable, Optional, Tuple, Union, get_type_hints
 
@@ -31,7 +31,7 @@ def auto_test(
     - *_auto_allow_exceptions*: A tuple of exceptions that are acceptable for the function to raise
       and will no be considered a test error.
     - *_auto_runs*: Number of strategies combinations to run the given function against.
-    - *_auto_verify*: An optional callback function that will be called to allow custom verification.
+    - *_auto_verify*: An optional callback function that will be called to allow custom verification
       of the functions return value. The callback function should raise an AssertionError if the
       return value does not match expectations.
     """
@@ -42,14 +42,20 @@ def auto_test(
         name: value if isinstance(value, SearchStrategy) else just(value)
         for name, value in kwargs.items()
     }
-    strategy = builds(_auto_function, *strategy_args, **strategy_kwargs)
+
+    def pass_along_variables(*args, **kwargs):
+        return args, kwargs
+
+    pass_along_variables.__signature__ = signature(_auto_function)  # type: ignore
+    pass_along_variables.__annotations__ = getattr(_auto_function, "__annotations__", {})
+    strategy = builds(pass_along_variables, *strategy_args, **strategy_kwargs)
 
     for _ in range(_auto_runs):
+        args, kwargs = strategy.example()
         try:
-            result = strategy.example()
+            result = _auto_function(*args, **kwargs)
         except _auto_allow_exceptions:  # type: ignore
             continue
-
         if return_type:
 
             class ReturnModel(BaseModel):
