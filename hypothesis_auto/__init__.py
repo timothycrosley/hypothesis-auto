@@ -1,3 +1,3 @@
 from hypothesis_auto.tester import auto_test, auto_test_module
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
