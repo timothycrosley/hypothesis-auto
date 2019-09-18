@@ -5,4 +5,4 @@ try:
 except ImportError:  # pragma: no cover
     pass
 
-__version__ = "0.0.5"
+__version__ = "1.0.0"
