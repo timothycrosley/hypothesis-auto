@@ -30,9 +30,11 @@ class TestCase(NamedTuple):
     parameters: Parameters
     test_function: Callable
 
-    def __call__(self) -> None:
-        """Calls the given test case returning None on success or Raising an exception on error"""
-        self.test_function(*self.parameters.args, **self.parameters.kwargs)
+    def __call__(self) -> Any:
+        """Calls the given test case returning the called functions result on success or
+        Raising an exception on error
+        """
+        return self.test_function(*self.parameters.args, **self.parameters.kwargs)
 
 
 def _test_function(
@@ -50,7 +52,7 @@ def _test_function(
 
         return_model = ReturnModel
 
-    def test_function(*args, **kwargs) -> None:
+    def test_function(*args, **kwargs) -> Any:
         try:
             result = _auto_function(*args, **kwargs)
         except _auto_allow_exceptions:  # type: ignore
@@ -60,6 +62,8 @@ def _test_function(
             return_model(returns=result)
         if _auto_verify:
             _auto_verify(result)
+
+        return result
 
     return test_function
 

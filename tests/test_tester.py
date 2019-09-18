@@ -1,7 +1,13 @@
 import pytest
 from hypothesis import strategies
 
-from hypothesis_auto import auto_test, auto_test_module
+from hypothesis_auto import (
+    auto_pytest,
+    auto_pytest_magic,
+    auto_test,
+    auto_test_cases,
+    auto_test_module,
+)
 
 from . import example_module
 
@@ -27,6 +33,19 @@ def test_auto_test():
     with pytest.raises(ValueError):
         auto_test(my_raise_function)
     auto_test(my_raise_function, _auto_allow_exceptions=(ValueError,))
+
+
+auto_pytest_magic(my_function)
+
+
+@pytest.mark.parametrize("test_case", auto_test_cases(my_function))
+def test_test_case_generation(test_case):
+    test_case()
+
+
+@auto_pytest(my_function)
+def test_auto_pytest(test_case):
+    test_case()
 
 
 def test_auto_test_module():
