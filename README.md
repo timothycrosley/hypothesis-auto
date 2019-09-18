@@ -12,7 +12,9 @@ _________________
 [Read Latest Documentation](https://timothycrosley.github.io/hypothesis-auto/) - [Browse GitHub Code Repository](https://github.com/timothycrosley/hypothesis-auto/)
 _________________
 
-An extension for the hypothesis project that enables fully automatic tests for type annotated functions:
+An extension for the hypothesis project that enables fully automatic tests for type annotated functions.
+
+[![Hypothesis Pytest Auto Example](https://raw.github.com/timothycrosley/hypothesis-auto/master/art/demo.gif)](https://github.com/timothycrosley/hypothesis-auto/blob/master/art/demo.gif)
 
 ```python3
 from hypothesis_auto import auto_test
