@@ -39,11 +39,16 @@ OR
 
 ## Usage Examples:
 
+!!! warning
+    In old usage examples you will see `_` prefixed parameters like `_auto_verify=` to avoid conflicted with existing function parameters.
+    Based on community feedback the project switched to `_` suffixes, such as `auto_verify_=` to keep the likely hood of conflicting low while
+    avoiding the connotation of private parameters.
+
 ### Framework independent usage
 
-Basic `auto_test` usage:
+#### Basic `auto_test` usage:
 
-```python31
+```python3
 from hypothesis_auto import auto_test
 
 
@@ -52,10 +57,10 @@ def add(number_1: int, number_2: int = 1) -> int:
 
 
 auto_test(add)  # 50 property based scenerios are generated and ran against add
-auto_test(add, _auto_runs=1_000)  # Let's make that 1,000
+auto_test(add, auto_runs_=1_000)  # Let's make that 1,000
 ```
 
-Adding an allowed exception:
+#### Adding an allowed exception:
 
 ```python3
 from hypothesis_auto import auto_test
@@ -80,14 +85,41 @@ auto_test(divide)
 ZeroDivisionError: division by zero
 
 
-auto_test(divide, _auto_allow_exceptions=(ZeroDivisionError, ))
+auto_test(divide, auto_allow_exceptions_=(ZeroDivisionError, ))
 ```
+
+#### Using `auto_test` with a custom verification method:
+
+```python3
+from hypothesis_auto import Scenerio, auto_test
+
+
+def add(number_1: int, number_2: int = 1) -> int:
+    return number_1 + number_2
+
+
+def my_custom_verifier(scenerio: Scenerio):
+    if scenerio.kwargs["number_1"] > 0 and scenerio.kwargs["number_2"] > 0:
+        assert scenerio.result > scenerio.kwargs["number_1"]
+        assert scenerio.result > scenerio.kwargs["number_1"]
+    elif scenerio.kwargs["number_1"] < 0 and scenerio.kwargs["number_2"] < 0:
+        assert scenerio.result < scenerio.kwargs["number_1"]
+        assert scenerio.result < scenerio.kwargs["number_1"]
+    else:
+        assert scenerio.result >= min(scenerio.kwargs.values())
+        assert scenerio.result <= max(scenerio.kwargs.values())
+
+
+auto_test(add, auto_verify_=my_custom_verifier)
+```
+
+Custom verification methods should take a single [Scenerio](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/#scenerio) and raise an exception to signify errors.
 
 For the full set of parameters, you can pass into auto_test see its [API reference documentation](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/).
 
 ### py.test usage
 
-Using `auto_pytest_magic` to auto-generate dozens of py.test test cases:
+#### Using `auto_pytest_magic` to auto-generate dozens of py.test test cases:
 
 ```python3
 from hypothesis_auto import auto_pytest_magic
@@ -100,9 +132,9 @@ def add(number_1: int, number_2: int = 1) -> int:
 auto_pytest_magic(add)
 ```
 
-Using `auto_pytest` to run dozens of test case within a temporary directory:
+#### Using `auto_pytest` to run dozens of test case within a temporary directory:
 
-```
+```python3
 from hypothesis_auto import auto_pytest
 
 
@@ -115,6 +147,33 @@ def test_add(test_case, tmpdir):
     tmpdir.mkdir().chdir()
     test_case()
 ```
+
+#### Using `auto_pytest_magic` with a custom verification method:
+
+```python3
+from hypothesis_auto import Scenerio, auto_pytest
+
+
+def add(number_1: int, number_2: int = 1) -> int:
+    return number_1 + number_2
+
+
+def my_custom_verifier(scenerio: Scenerio):
+    if scenerio.kwargs["number_1"] > 0 and scenerio.kwargs["number_2"] > 0:
+        assert scenerio.result > scenerio.kwargs["number_1"]
+        assert scenerio.result > scenerio.kwargs["number_1"]
+    elif scenerio.kwargs["number_1"] < 0 and scenerio.kwargs["number_2"] < 0:
+        assert scenerio.result < scenerio.kwargs["number_1"]
+        assert scenerio.result < scenerio.kwargs["number_1"]
+    else:
+        assert scenerio.result >= min(scenerio.kwargs.values())
+        assert scenerio.result <= max(scenerio.kwargs.values())
+
+
+auto_pytest_magic(add, auto_verify_=my_custom_verifier)
+```
+
+Custom verification methods should take a single [Scenerio](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/#scenerio) and raise an exception to signify errors.
 
 For the full reference of the py.test integration API see the [API reference documentation](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/pytest/).
 
