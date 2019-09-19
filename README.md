@@ -116,7 +116,7 @@ def test_add(test_case, tmpdir):
     test_case()
 ```
 
-For the full reference of the py.test integration API see the [API reference documentation](https://timothycrosley.github.io/hyp othesis-auto/reference/hypothesis_auto/pytest/).
+For the full reference of the py.test integration API see the [API reference documentation](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/pytest/).
 
 ## Why Create hypothesis-auto?
 
