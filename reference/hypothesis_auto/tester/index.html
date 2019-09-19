@@ -514,8 +514,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#scenerio" class="md-nav__link">
-    Scenerio
+  <a href="#scenario" class="md-nav__link">
+    Scenario
   </a>
   
     <nav class="md-nav">
@@ -771,8 +771,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#scenerio" class="md-nav__link">
-    Scenerio
+  <a href="#scenario" class="md-nav__link">
+    Scenario
   </a>
   
     <nav class="md-nav">
@@ -961,9 +961,9 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_function</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">Scenerio</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Scenario</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
 
-    <span class="sd">&quot;&quot;&quot;Represents entirety of the scenerio being tested:</span>
+    <span class="sd">&quot;&quot;&quot;Represents entirety of the scenario being tested:</span>
 
 <span class="sd">    - *args*: The auto-generated `*args` being passed into the test function.</span>
 
@@ -971,7 +971,7 @@
 
 <span class="sd">    - *result*: The result returned from calling the test function.</span>
 
-<span class="sd">    - *test_function*: The test_function that was called as part of the test scenerio.</span>
+<span class="sd">    - *test_function*: The test_function that was called as part of the test scenario.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -987,7 +987,7 @@
 
     <span class="n">auto_function_</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
 
-    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Scenerio</span><span class="p">],</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Scenario</span><span class="p">],</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
 
     <span class="n">auto_allow_exceptions_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
 
@@ -1023,7 +1023,7 @@
 
             <span class="n">auto_verify_</span><span class="p">(</span>
 
-                <span class="n">Scenerio</span><span class="p">(</span>
+                <span class="n">Scenario</span><span class="p">(</span>
 
                     <span class="n">args</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">),</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="n">result</span><span class="p">,</span> <span class="n">test_function</span><span class="o">=</span><span class="n">auto_function_</span>
 
@@ -1099,7 +1099,7 @@
 
     <span class="n">auto_limit_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
 
-    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Scenerio</span><span class="p">],</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Scenario</span><span class="p">],</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
 
     <span class="o">**</span><span class="n">kwargs</span>
 
@@ -1159,7 +1159,7 @@
 
     <span class="n">auto_runs_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
 
-    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Scenerio</span><span class="p">],</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Scenario</span><span class="p">],</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
 
     <span class="o">**</span><span class="n">kwargs</span>
 
@@ -1321,7 +1321,7 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
     <span class="o">*</span><span class="n">args</span><span class="p">,</span>
     <span class="n">auto_allow_exceptions_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
     <span class="n">auto_runs_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
-    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">hypothesis_auto</span><span class="o">.</span><span class="n">tester</span><span class="o">.</span><span class="n">Scenerio</span><span class="p">],</span> <span class="n">Any</span><span class="p">],</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">hypothesis_auto</span><span class="o">.</span><span class="n">tester</span><span class="o">.</span><span class="n">Scenario</span><span class="p">],</span> <span class="n">Any</span><span class="p">],</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </pre></div>
@@ -1355,7 +1355,7 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 
     <span class="nv">auto_runs_</span>: <span class="nv">int</span> <span class="o">=</span> <span class="mi">50</span>,
 
-    <span class="nv">auto_verify_</span>: <span class="nv">Optional</span>[<span class="nv">Callable</span>[[<span class="nv">Scenerio</span>], <span class="nv">Any</span>]] <span class="o">=</span> <span class="nv">None</span>,
+    <span class="nv">auto_verify_</span>: <span class="nv">Optional</span>[<span class="nv">Callable</span>[[<span class="nv">Scenario</span>], <span class="nv">Any</span>]] <span class="o">=</span> <span class="nv">None</span>,
 
     <span class="o">**</span><span class="nv">kwargs</span>
 
@@ -1422,7 +1422,7 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
     <span class="o">*</span><span class="n">args</span><span class="p">,</span>
     <span class="n">auto_allow_exceptions_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
     <span class="n">auto_limit_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
-    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">hypothesis_auto</span><span class="o">.</span><span class="n">tester</span><span class="o">.</span><span class="n">Scenerio</span><span class="p">],</span> <span class="n">Any</span><span class="p">],</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">hypothesis_auto</span><span class="o">.</span><span class="n">tester</span><span class="o">.</span><span class="n">Scenario</span><span class="p">],</span> <span class="n">Any</span><span class="p">],</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">hypothesis_auto</span><span class="o">.</span><span class="n">tester</span><span class="o">.</span><span class="n">TestCase</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>
 </pre></div>
@@ -1456,7 +1456,7 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 
     <span class="nv">auto_limit_</span>: <span class="nv">int</span> <span class="o">=</span> <span class="mi">50</span>,
 
-    <span class="nv">auto_verify_</span>: <span class="nv">Optional</span>[<span class="nv">Callable</span>[[<span class="nv">Scenerio</span>], <span class="nv">Any</span>]] <span class="o">=</span> <span class="nv">None</span>,
+    <span class="nv">auto_verify_</span>: <span class="nv">Optional</span>[<span class="nv">Callable</span>[[<span class="nv">Scenario</span>], <span class="nv">Any</span>]] <span class="o">=</span> <span class="nv">None</span>,
 
     <span class="o">**</span><span class="nv">kwargs</span>
 
@@ -1596,8 +1596,8 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 
 <p>Return first index of value.</p>
 <p>Raises ValueError if the value is not present.</p>
-<h3 id="scenerio">Scenerio</h3>
-<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Scenerio</span><span class="p">(</span>
+<h3 id="scenario">Scenario</h3>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Scenario</span><span class="p">(</span>
     <span class="o">/</span><span class="p">,</span>
     <span class="o">*</span><span class="n">args</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span>
@@ -1605,16 +1605,16 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 </pre></div>
 
 
-<p>Represents entirety of the scenerio being tested:</p>
+<p>Represents entirety of the scenario being tested:</p>
 <ul>
 <li><em>args</em>: The auto-generated <code>*args</code> being passed into the test function.</li>
 <li><em>kwargs</em>: The auto-generated <code>**kwargs</code> being passed into the test function.</li>
 <li><em>result</em>: The result returned from calling the test function.</li>
-<li><em>test_function</em>: The test_function that was called as part of the test scenerio.</li>
+<li><em>test_function</em>: The test_function that was called as part of the test scenario.</li>
 </ul>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="n">Scenerio</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="n">Scenario</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
 
-<span class="w">    </span><span class="ss">&quot;&quot;&quot;Represents entirety of the scenerio being tested:</span>
+<span class="w">    </span><span class="ss">&quot;&quot;&quot;Represents entirety of the scenario being tested:</span>
 
 <span class="ss">    - *args*: The auto-generated `*args` being passed into the test function.</span>
 
@@ -1622,7 +1622,7 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 
 <span class="ss">    - *result*: The result returned from calling the test function.</span>
 
-<span class="ss">    - *test_function*: The test_function that was called as part of the test scenerio.</span>
+<span class="ss">    - *test_function*: The test_function that was called as part of the test scenario.</span>
 
 <span class="ss">    &quot;&quot;&quot;</span><span class="w"></span>
 
