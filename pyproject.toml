@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hypothesis-auto"
-version = "1.1.0"
+version = "1.1.1"
 description = "Extends Hypothesis to add fully automatic testing of type annotated functions"
 authors = ["Timothy Crosley <timothy.crosley@gmail.com>"]
 license = "MIT"
