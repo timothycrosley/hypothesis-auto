@@ -42,7 +42,7 @@ class Scenerio(NamedTuple):
 
     - *args*: The auto-generated `*args` being passed into the test function.
     - *kwargs*: The auto-generated `**kwargs` being passed into the test function.
-    - *result: The result returned from calling the test function.
+    - *result*: The result returned from calling the test function.
     - *test_function*: The test_function that was called as part of the test scenerio.
     """
 
