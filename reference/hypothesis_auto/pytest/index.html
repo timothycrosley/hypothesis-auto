@@ -233,15 +233,27 @@
       
 
 
+  <li class="md-nav__item">
+    <a href="../../../CHANGELOG/" title="Changelog" class="md-nav__link">
+      Changelog
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
-    <label class="md-nav__link" for="nav-2">
+    <label class="md-nav__link" for="nav-3">
       Contributing
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
+      <label class="md-nav__title" for="nav-3">
         Contributing
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -309,13 +321,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
-    <label class="md-nav__link" for="nav-3">
+    <label class="md-nav__link" for="nav-4">
       Reference
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
+      <label class="md-nav__title" for="nav-4">
         Reference
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -330,13 +342,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" checked>
     
-    <label class="md-nav__link" for="nav-3-1">
+    <label class="md-nav__link" for="nav-4-1">
       Hypothesis Auto
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-1">
+      <label class="md-nav__title" for="nav-4-1">
         Hypothesis Auto
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -515,25 +527,25 @@
                 <h1 id="module-hypothesis_autopytest">Module hypothesis_auto.pytest</h1>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">inspect</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">uuid4</span>
 
 <span class="kn">import</span> <span class="nn">pytest</span>
 
-<span class="kn">from</span> <span class="nn">hypothesis_auto.tester</span> <span class="kn">import</span> <span class="n">auto_test_cases</span>
+<span class="kn">from</span> <span class="nn">hypothesis_auto.tester</span> <span class="kn">import</span> <span class="n">Scenerio</span><span class="p">,</span> <span class="n">auto_test_cases</span>
 
 <span class="k">def</span> <span class="nf">auto_pytest</span><span class="p">(</span>
 
-    <span class="n">_auto_function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">auto_function_</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
 
     <span class="o">*</span><span class="n">args</span><span class="p">,</span>
 
-    <span class="n">_auto_allow_exceptions</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">auto_allow_exceptions_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
 
-    <span class="n">_auto_runs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">auto_runs_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
 
-    <span class="n">_auto_verify</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
 
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 
@@ -559,13 +571,13 @@
 
 <span class="sd">    Except for the following options:</span>
 
-<span class="sd">    - *_auto_allow_exceptions*: A tuple of exceptions that are acceptable for the function to raise</span>
+<span class="sd">    - *auto_allow_exceptions_*: A tuple of exceptions that are acceptable for the function to raise</span>
 
 <span class="sd">      and will no be considered a test error.</span>
 
-<span class="sd">    - *_auto_runs*: Number of strategies combinations to run the given function against.</span>
+<span class="sd">    - *auto_runs_*: Number of strategies combinations to run the given function against.</span>
 
-<span class="sd">    - *_auto_verify*: An optional callback function that will be called to allow custom verification</span>
+<span class="sd">    - *auto_verify_*: An optional callback function that will be called to allow custom verification</span>
 
 <span class="sd">      of the functions return value. The callback function should raise an AssertionError if the</span>
 
@@ -593,15 +605,15 @@
 
         <span class="n">auto_test_cases</span><span class="p">(</span>
 
-            <span class="n">_auto_function</span><span class="p">,</span>
+            <span class="n">auto_function_</span><span class="p">,</span>
 
             <span class="o">*</span><span class="n">args</span><span class="p">,</span>
 
-            <span class="n">_auto_allow_exceptions</span><span class="o">=</span><span class="n">_auto_allow_exceptions</span><span class="p">,</span>
+            <span class="n">auto_allow_exceptions_</span><span class="o">=</span><span class="n">auto_allow_exceptions_</span><span class="p">,</span>
 
-            <span class="n">_auto_limit</span><span class="o">=</span><span class="n">_auto_runs</span><span class="p">,</span>
+            <span class="n">auto_limit_</span><span class="o">=</span><span class="n">auto_runs_</span><span class="p">,</span>
 
-            <span class="n">_auto_verify</span><span class="o">=</span><span class="n">_auto_verify</span><span class="p">,</span>
+            <span class="n">auto_verify_</span><span class="o">=</span><span class="n">auto_verify_</span><span class="p">,</span>
 
         <span class="p">),</span>
 
@@ -609,15 +621,15 @@
 
 <span class="k">def</span> <span class="nf">auto_pytest_magic</span><span class="p">(</span>
 
-    <span class="n">_auto_function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">auto_function_</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
 
     <span class="o">*</span><span class="n">args</span><span class="p">,</span>
 
-    <span class="n">_auto_allow_exceptions</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">auto_allow_exceptions_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
 
-    <span class="n">_auto_runs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">auto_runs_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
 
-    <span class="n">_auto_verify</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Scenerio</span><span class="p">],</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
 
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 
@@ -645,13 +657,13 @@
 
 <span class="sd">    Except for the following options:</span>
 
-<span class="sd">    - *_auto_allow_exceptions*: A tuple of exceptions that are acceptable for the function to raise</span>
+<span class="sd">    - *auto_allow_exceptions_*: A tuple of exceptions that are acceptable for the function to raise</span>
 
 <span class="sd">      and will no be considered a test error.</span>
 
-<span class="sd">    - *_auto_runs*: Number of strategies combinations to run the given function against.</span>
+<span class="sd">    - *auto_runs_*: Number of strategies combinations to run the given function against.</span>
 
-<span class="sd">    - *_auto_verify*: An optional callback function that will be called to allow custom verification</span>
+<span class="sd">    - *auto_verify_*: An optional callback function that will be called to allow custom verification</span>
 
 <span class="sd">      of the functions return value. The callback function should raise an AssertionError if the</span>
 
@@ -677,7 +689,7 @@
 
     <span class="n">uuid</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid4</span><span class="p">())</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
 
-    <span class="n">test_function</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;test_auto_{_auto_function.__name__}_{uuid}&quot;</span>
+    <span class="n">test_function</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;test_auto_{auto_function_.__name__}_{uuid}&quot;</span>
 
     <span class="nb">setattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">test_function</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">test_function</span><span class="p">)</span>
 
@@ -687,15 +699,15 @@
 
         <span class="n">auto_test_cases</span><span class="p">(</span>
 
-            <span class="n">_auto_function</span><span class="p">,</span>
+            <span class="n">auto_function_</span><span class="p">,</span>
 
             <span class="o">*</span><span class="n">args</span><span class="p">,</span>
 
-            <span class="n">_auto_allow_exceptions</span><span class="o">=</span><span class="n">_auto_allow_exceptions</span><span class="p">,</span>
+            <span class="n">auto_allow_exceptions_</span><span class="o">=</span><span class="n">auto_allow_exceptions_</span><span class="p">,</span>
 
-            <span class="n">_auto_limit</span><span class="o">=</span><span class="n">_auto_runs</span><span class="p">,</span>
+            <span class="n">auto_limit_</span><span class="o">=</span><span class="n">auto_runs_</span><span class="p">,</span>
 
-            <span class="n">_auto_verify</span><span class="o">=</span><span class="n">_auto_verify</span><span class="p">,</span>
+            <span class="n">auto_verify_</span><span class="o">=</span><span class="n">auto_verify_</span><span class="p">,</span>
 
         <span class="p">),</span>
 
@@ -707,11 +719,11 @@
 <h2 id="functions">Functions</h2>
 <h3 id="auto_pytest">auto_pytest</h3>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">auto_pytest</span><span class="p">(</span>
-    <span class="n">_auto_function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">auto_function_</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="o">*</span><span class="n">args</span><span class="p">,</span>
-    <span class="n">_auto_allow_exceptions</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
-    <span class="n">_auto_runs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
-    <span class="n">_auto_verify</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callable</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">auto_allow_exceptions_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">auto_runs_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callable</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </pre></div>
@@ -728,10 +740,10 @@ certain parameters while letting others be auto generated.</p>
 to strategies using <code>hypothesis.strategies.just</code>.</p>
 <p>Except for the following options:</p>
 <ul>
-<li><em>_auto_allow_exceptions</em>: A tuple of exceptions that are acceptable for the function to raise
+<li><em>auto_allow_exceptions_</em>: A tuple of exceptions that are acceptable for the function to raise
   and will no be considered a test error.</li>
-<li><em>_auto_runs</em>: Number of strategies combinations to run the given function against.</li>
-<li><em>_auto_verify</em>: An optional callback function that will be called to allow custom verification
+<li><em>auto_runs_</em>: Number of strategies combinations to run the given function against.</li>
+<li><em>auto_verify_</em>: An optional callback function that will be called to allow custom verification
   of the functions return value. The callback function should raise an AssertionError if the
   return value does not match expectations.</li>
 </ul>
@@ -748,15 +760,15 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 <hr />
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">auto_pytest</span><span class="ss">(</span>
 
-    <span class="nv">_auto_function</span>: <span class="nv">Callable</span>,
+    <span class="nv">auto_function_</span>: <span class="nv">Callable</span>,
 
     <span class="o">*</span><span class="nv">args</span>,
 
-    <span class="nv">_auto_allow_exceptions</span>: <span class="nv">Union</span>[<span class="nv">Tuple</span>[<span class="nv">BaseException</span>], <span class="nv">Tuple</span>] <span class="o">=</span> <span class="ss">()</span>,
+    <span class="nv">auto_allow_exceptions_</span>: <span class="nv">Union</span>[<span class="nv">Tuple</span>[<span class="nv">BaseException</span>], <span class="nv">Tuple</span>] <span class="o">=</span> <span class="ss">()</span>,
 
-    <span class="nv">_auto_runs</span>: <span class="nv">int</span> <span class="o">=</span> <span class="mi">50</span>,
+    <span class="nv">auto_runs_</span>: <span class="nv">int</span> <span class="o">=</span> <span class="mi">50</span>,
 
-    <span class="nv">_auto_verify</span>: <span class="nv">Optional</span>[<span class="nv">Callable</span>] <span class="o">=</span> <span class="nv">None</span>,
+    <span class="nv">auto_verify_</span>: <span class="nv">Optional</span>[<span class="nv">Callable</span>] <span class="o">=</span> <span class="nv">None</span>,
 
     <span class="o">**</span><span class="nv">kwargs</span>,
 
@@ -782,13 +794,13 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 
     <span class="nv">Except</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">following</span> <span class="nv">options</span>:
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">_auto_allow_exceptions</span><span class="o">*</span>: <span class="nv">A</span> <span class="nv">tuple</span> <span class="nv">of</span> <span class="nv">exceptions</span> <span class="nv">that</span> <span class="nv">are</span> <span class="nv">acceptable</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">function</span> <span class="nv">to</span> <span class="nv">raise</span>
+    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_allow_exceptions_</span><span class="o">*</span>: <span class="nv">A</span> <span class="nv">tuple</span> <span class="nv">of</span> <span class="nv">exceptions</span> <span class="nv">that</span> <span class="nv">are</span> <span class="nv">acceptable</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">function</span> <span class="nv">to</span> <span class="nv">raise</span>
 
       <span class="nv">and</span> <span class="nv">will</span> <span class="nv">no</span> <span class="nv">be</span> <span class="nv">considered</span> <span class="nv">a</span> <span class="nv">test</span> <span class="nv">error</span>.
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">_auto_runs</span><span class="o">*</span>: <span class="nv">Number</span> <span class="nv">of</span> <span class="nv">strategies</span> <span class="nv">combinations</span> <span class="nv">to</span> <span class="nv">run</span> <span class="nv">the</span> <span class="nv">given</span> <span class="nv">function</span> <span class="nv">against</span>.
+    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_runs_</span><span class="o">*</span>: <span class="nv">Number</span> <span class="nv">of</span> <span class="nv">strategies</span> <span class="nv">combinations</span> <span class="nv">to</span> <span class="nv">run</span> <span class="nv">the</span> <span class="nv">given</span> <span class="nv">function</span> <span class="nv">against</span>.
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">_auto_verify</span><span class="o">*</span>: <span class="nv">An</span> <span class="nv">optional</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">that</span> <span class="nv">will</span> <span class="nv">be</span> <span class="nv">called</span> <span class="nv">to</span> <span class="nv">allow</span> <span class="nv">custom</span> <span class="nv">verification</span>
+    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_verify_</span><span class="o">*</span>: <span class="nv">An</span> <span class="nv">optional</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">that</span> <span class="nv">will</span> <span class="nv">be</span> <span class="nv">called</span> <span class="nv">to</span> <span class="nv">allow</span> <span class="nv">custom</span> <span class="nv">verification</span>
 
       <span class="nv">of</span> <span class="nv">the</span> <span class="nv">functions</span> <span class="k">return</span> <span class="nv">value</span>. <span class="nv">The</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">should</span> <span class="nv">raise</span> <span class="nv">an</span> <span class="nv">AssertionError</span> <span class="k">if</span> <span class="nv">the</span>
 
@@ -816,15 +828,15 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 
         <span class="nv">auto_test_cases</span><span class="ss">(</span>
 
-            <span class="nv">_auto_function</span>,
+            <span class="nv">auto_function_</span>,
 
             <span class="o">*</span><span class="nv">args</span>,
 
-            <span class="nv">_auto_allow_exceptions</span><span class="o">=</span><span class="nv">_auto_allow_exceptions</span>,
+            <span class="nv">auto_allow_exceptions_</span><span class="o">=</span><span class="nv">auto_allow_exceptions_</span>,
 
-            <span class="nv">_auto_limit</span><span class="o">=</span><span class="nv">_auto_runs</span>,
+            <span class="nv">auto_limit_</span><span class="o">=</span><span class="nv">auto_runs_</span>,
 
-            <span class="nv">_auto_verify</span><span class="o">=</span><span class="nv">_auto_verify</span>,
+            <span class="nv">auto_verify_</span><span class="o">=</span><span class="nv">auto_verify_</span>,
 
         <span class="ss">)</span>,
 
@@ -835,11 +847,11 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 </details>
 <h3 id="auto_pytest_magic">auto_pytest_magic</h3>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">auto_pytest_magic</span><span class="p">(</span>
-    <span class="n">_auto_function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">auto_function_</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="o">*</span><span class="n">args</span><span class="p">,</span>
-    <span class="n">_auto_allow_exceptions</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
-    <span class="n">_auto_runs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
-    <span class="n">_auto_verify</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callable</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">auto_allow_exceptions_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">auto_runs_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">auto_verify_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">hypothesis_auto</span><span class="o">.</span><span class="n">tester</span><span class="o">.</span><span class="n">Scenerio</span><span class="p">],</span> <span class="n">Any</span><span class="p">],</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </pre></div>
@@ -857,10 +869,10 @@ certain parameters while letting others be auto generated.</p>
 to strategies using <code>hypothesis.strategies.just</code>.</p>
 <p>Except for the following options:</p>
 <ul>
-<li><em>_auto_allow_exceptions</em>: A tuple of exceptions that are acceptable for the function to raise
+<li><em>auto_allow_exceptions_</em>: A tuple of exceptions that are acceptable for the function to raise
   and will no be considered a test error.</li>
-<li><em>_auto_runs</em>: Number of strategies combinations to run the given function against.</li>
-<li><em>_auto_verify</em>: An optional callback function that will be called to allow custom verification
+<li><em>auto_runs_</em>: Number of strategies combinations to run the given function against.</li>
+<li><em>auto_verify_</em>: An optional callback function that will be called to allow custom verification
   of the functions return value. The callback function should raise an AssertionError if the
   return value does not match expectations.</li>
 </ul>
@@ -874,15 +886,15 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">auto_pytest_magic</span><span class="ss">(</span>
 
-    <span class="nv">_auto_function</span>: <span class="nv">Callable</span>,
+    <span class="nv">auto_function_</span>: <span class="nv">Callable</span>,
 
     <span class="o">*</span><span class="nv">args</span>,
 
-    <span class="nv">_auto_allow_exceptions</span>: <span class="nv">Union</span>[<span class="nv">Tuple</span>[<span class="nv">BaseException</span>], <span class="nv">Tuple</span>] <span class="o">=</span> <span class="ss">()</span>,
+    <span class="nv">auto_allow_exceptions_</span>: <span class="nv">Union</span>[<span class="nv">Tuple</span>[<span class="nv">BaseException</span>], <span class="nv">Tuple</span>] <span class="o">=</span> <span class="ss">()</span>,
 
-    <span class="nv">_auto_runs</span>: <span class="nv">int</span> <span class="o">=</span> <span class="mi">50</span>,
+    <span class="nv">auto_runs_</span>: <span class="nv">int</span> <span class="o">=</span> <span class="mi">50</span>,
 
-    <span class="nv">_auto_verify</span>: <span class="nv">Optional</span>[<span class="nv">Callable</span>] <span class="o">=</span> <span class="nv">None</span>,
+    <span class="nv">auto_verify_</span>: <span class="nv">Optional</span>[<span class="nv">Callable</span>[[<span class="nv">Scenerio</span>], <span class="nv">Any</span>]] <span class="o">=</span> <span class="nv">None</span>,
 
     <span class="o">**</span><span class="nv">kwargs</span>,
 
@@ -910,13 +922,13 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 
     <span class="nv">Except</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">following</span> <span class="nv">options</span>:
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">_auto_allow_exceptions</span><span class="o">*</span>: <span class="nv">A</span> <span class="nv">tuple</span> <span class="nv">of</span> <span class="nv">exceptions</span> <span class="nv">that</span> <span class="nv">are</span> <span class="nv">acceptable</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">function</span> <span class="nv">to</span> <span class="nv">raise</span>
+    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_allow_exceptions_</span><span class="o">*</span>: <span class="nv">A</span> <span class="nv">tuple</span> <span class="nv">of</span> <span class="nv">exceptions</span> <span class="nv">that</span> <span class="nv">are</span> <span class="nv">acceptable</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">function</span> <span class="nv">to</span> <span class="nv">raise</span>
 
       <span class="nv">and</span> <span class="nv">will</span> <span class="nv">no</span> <span class="nv">be</span> <span class="nv">considered</span> <span class="nv">a</span> <span class="nv">test</span> <span class="nv">error</span>.
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">_auto_runs</span><span class="o">*</span>: <span class="nv">Number</span> <span class="nv">of</span> <span class="nv">strategies</span> <span class="nv">combinations</span> <span class="nv">to</span> <span class="nv">run</span> <span class="nv">the</span> <span class="nv">given</span> <span class="nv">function</span> <span class="nv">against</span>.
+    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_runs_</span><span class="o">*</span>: <span class="nv">Number</span> <span class="nv">of</span> <span class="nv">strategies</span> <span class="nv">combinations</span> <span class="nv">to</span> <span class="nv">run</span> <span class="nv">the</span> <span class="nv">given</span> <span class="nv">function</span> <span class="nv">against</span>.
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">_auto_verify</span><span class="o">*</span>: <span class="nv">An</span> <span class="nv">optional</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">that</span> <span class="nv">will</span> <span class="nv">be</span> <span class="nv">called</span> <span class="nv">to</span> <span class="nv">allow</span> <span class="nv">custom</span> <span class="nv">verification</span>
+    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_verify_</span><span class="o">*</span>: <span class="nv">An</span> <span class="nv">optional</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">that</span> <span class="nv">will</span> <span class="nv">be</span> <span class="nv">called</span> <span class="nv">to</span> <span class="nv">allow</span> <span class="nv">custom</span> <span class="nv">verification</span>
 
       <span class="nv">of</span> <span class="nv">the</span> <span class="nv">functions</span> <span class="k">return</span> <span class="nv">value</span>. <span class="nv">The</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">should</span> <span class="nv">raise</span> <span class="nv">an</span> <span class="nv">AssertionError</span> <span class="k">if</span> <span class="nv">the</span>
 
@@ -942,7 +954,7 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 
     <span class="nv">uuid</span> <span class="o">=</span> <span class="nv">str</span><span class="ss">(</span><span class="nv">uuid4</span><span class="ss">())</span>.<span class="nv">replace</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">-</span><span class="s2">&quot;</span>, <span class="s2">&quot;&quot;</span><span class="ss">)</span>
 
-    <span class="nv">test_function</span>.<span class="nv">__name__</span> <span class="o">=</span> <span class="nv">f</span><span class="s2">&quot;</span><span class="s">test_auto_{_auto_function.__name__}_{uuid}</span><span class="s2">&quot;</span>
+    <span class="nv">test_function</span>.<span class="nv">__name__</span> <span class="o">=</span> <span class="nv">f</span><span class="s2">&quot;</span><span class="s">test_auto_{auto_function_.__name__}_{uuid}</span><span class="s2">&quot;</span>
 
     <span class="nv">setattr</span><span class="ss">(</span><span class="nv">module</span>, <span class="nv">test_function</span>.<span class="nv">__name__</span>, <span class="nv">test_function</span><span class="ss">)</span>
 
@@ -952,15 +964,15 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 
         <span class="nv">auto_test_cases</span><span class="ss">(</span>
 
-            <span class="nv">_auto_function</span>,
+            <span class="nv">auto_function_</span>,
 
             <span class="o">*</span><span class="nv">args</span>,
 
-            <span class="nv">_auto_allow_exceptions</span><span class="o">=</span><span class="nv">_auto_allow_exceptions</span>,
+            <span class="nv">auto_allow_exceptions_</span><span class="o">=</span><span class="nv">auto_allow_exceptions_</span>,
 
-            <span class="nv">_auto_limit</span><span class="o">=</span><span class="nv">_auto_runs</span>,
+            <span class="nv">auto_limit_</span><span class="o">=</span><span class="nv">auto_runs_</span>,
 
-            <span class="nv">_auto_verify</span><span class="o">=</span><span class="nv">_auto_verify</span>,
+            <span class="nv">auto_verify_</span><span class="o">=</span><span class="nv">auto_verify_</span>,
 
         <span class="ss">)</span>,
 
