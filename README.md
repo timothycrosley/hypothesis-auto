@@ -40,7 +40,7 @@ OR
 ## Usage Examples:
 
 !!! warning
-    In old usage examples you will see `_` prefixed parameters like `_auto_verify=` to avoid conflicted with existing function parameters.
+    In old usage examples you will see `_` prefixed parameters like `_auto_verify=`. This was done to avoid conflicting with existing function parameters.
     Based on community feedback the project switched to `_` suffixes, such as `auto_verify_=` to keep the likely hood of conflicting low while
     avoiding the connotation of private parameters.
 
