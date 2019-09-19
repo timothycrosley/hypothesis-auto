@@ -37,13 +37,13 @@ class TestCase(NamedTuple):
         return self.test_function(*self.parameters.args, **self.parameters.kwargs)
 
 
-class Scenerio(NamedTuple):
-    """Represents entirety of the scenerio being tested:
+class Scenario(NamedTuple):
+    """Represents entirety of the scenario being tested:
 
     - *args*: The auto-generated `*args` being passed into the test function.
     - *kwargs*: The auto-generated `**kwargs` being passed into the test function.
     - *result*: The result returned from calling the test function.
-    - *test_function*: The test_function that was called as part of the test scenerio.
+    - *test_function*: The test_function that was called as part of the test scenario.
     """
 
     args: List[Any]
@@ -54,7 +54,7 @@ class Scenerio(NamedTuple):
 
 def _test_function(
     auto_function_: Callable,
-    auto_verify_: Optional[Callable[[Scenerio], Any]] = None,
+    auto_verify_: Optional[Callable[[Scenario], Any]] = None,
     auto_allow_exceptions_: Union[Tuple[BaseException], Tuple] = (),
 ) -> Callable:
     return_type = get_type_hints(auto_function_).get("return", None)
@@ -77,7 +77,7 @@ def _test_function(
             return_model(returns=result)
         if auto_verify_:
             auto_verify_(
-                Scenerio(
+                Scenario(
                     args=list(args), kwargs=kwargs, result=result, test_function=auto_function_
                 )
             )
@@ -128,7 +128,7 @@ def auto_test_cases(
     *args,
     auto_allow_exceptions_: Union[Tuple[BaseException], Tuple] = (),
     auto_limit_: int = 50,
-    auto_verify_: Optional[Callable[[Scenerio], Any]] = None,
+    auto_verify_: Optional[Callable[[Scenario], Any]] = None,
     **kwargs
 ) -> Generator[TestCase, None, None]:
     """Generates test cases from the given callable up to the specified limit
@@ -164,7 +164,7 @@ def auto_test(
     *args,
     auto_allow_exceptions_: Union[Tuple[BaseException], Tuple] = (),
     auto_runs_: int = 50,
-    auto_verify_: Optional[Callable[[Scenerio], Any]] = None,
+    auto_verify_: Optional[Callable[[Scenario], Any]] = None,
     **kwargs
 ) -> None:
     """A simple utility function for hypothesis that enables fully automatic testing for a

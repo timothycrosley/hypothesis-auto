@@ -4,7 +4,7 @@ from uuid import uuid4
 
 import pytest
 
-from hypothesis_auto.tester import Scenerio, auto_test_cases
+from hypothesis_auto.tester import Scenario, auto_test_cases
 
 
 def auto_pytest(
@@ -12,7 +12,7 @@ def auto_pytest(
     *args,
     auto_allow_exceptions_: Union[Tuple[BaseException], Tuple] = (),
     auto_runs_: int = 50,
-    auto_verify_: Optional[Callable] = None,
+    auto_verify_: Optional[Callable[[Scenario], Any]] = None,
     **kwargs,
 ) -> None:
     """A decorator that marks a parameterized pytest function passing along a callable test case.
@@ -65,7 +65,7 @@ def auto_pytest_magic(
     *args,
     auto_allow_exceptions_: Union[Tuple[BaseException], Tuple] = (),
     auto_runs_: int = 50,
-    auto_verify_: Optional[Callable[[Scenerio], Any]] = None,
+    auto_verify_: Optional[Callable[[Scenario], Any]] = None,
     **kwargs,
 ) -> None:
     """A convenience function that builds a new test function inside the calling module and

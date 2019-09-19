@@ -56,7 +56,7 @@ def add(number_1: int, number_2: int = 1) -> int:
     return number_1 + number_2
 
 
-auto_test(add)  # 50 property based scenerios are generated and ran against add
+auto_test(add)  # 50 property based scenarios are generated and ran against add
 auto_test(add, auto_runs_=1_000)  # Let's make that 1,000
 ```
 
@@ -91,29 +91,29 @@ auto_test(divide, auto_allow_exceptions_=(ZeroDivisionError, ))
 #### Using `auto_test` with a custom verification method:
 
 ```python3
-from hypothesis_auto import Scenerio, auto_test
+from hypothesis_auto import Scenario, auto_test
 
 
 def add(number_1: int, number_2: int = 1) -> int:
     return number_1 + number_2
 
 
-def my_custom_verifier(scenerio: Scenerio):
-    if scenerio.kwargs["number_1"] > 0 and scenerio.kwargs["number_2"] > 0:
-        assert scenerio.result > scenerio.kwargs["number_1"]
-        assert scenerio.result > scenerio.kwargs["number_1"]
-    elif scenerio.kwargs["number_1"] < 0 and scenerio.kwargs["number_2"] < 0:
-        assert scenerio.result < scenerio.kwargs["number_1"]
-        assert scenerio.result < scenerio.kwargs["number_1"]
+def my_custom_verifier(scenario: Scenario):
+    if scenario.kwargs["number_1"] > 0 and scenario.kwargs["number_2"] > 0:
+        assert scenario.result > scenario.kwargs["number_1"]
+        assert scenario.result > scenario.kwargs["number_1"]
+    elif scenario.kwargs["number_1"] < 0 and scenario.kwargs["number_2"] < 0:
+        assert scenario.result < scenario.kwargs["number_1"]
+        assert scenario.result < scenario.kwargs["number_1"]
     else:
-        assert scenerio.result >= min(scenerio.kwargs.values())
-        assert scenerio.result <= max(scenerio.kwargs.values())
+        assert scenario.result >= min(scenario.kwargs.values())
+        assert scenario.result <= max(scenario.kwargs.values())
 
 
 auto_test(add, auto_verify_=my_custom_verifier)
 ```
 
-Custom verification methods should take a single [Scenerio](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/#scenerio) and raise an exception to signify errors.
+Custom verification methods should take a single [Scenario](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/#scenario) and raise an exception to signify errors.
 
 For the full set of parameters, you can pass into auto_test see its [API reference documentation](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/).
 
@@ -151,29 +151,29 @@ def test_add(test_case, tmpdir):
 #### Using `auto_pytest_magic` with a custom verification method:
 
 ```python3
-from hypothesis_auto import Scenerio, auto_pytest
+from hypothesis_auto import Scenario, auto_pytest
 
 
 def add(number_1: int, number_2: int = 1) -> int:
     return number_1 + number_2
 
 
-def my_custom_verifier(scenerio: Scenerio):
-    if scenerio.kwargs["number_1"] > 0 and scenerio.kwargs["number_2"] > 0:
-        assert scenerio.result > scenerio.kwargs["number_1"]
-        assert scenerio.result > scenerio.kwargs["number_1"]
-    elif scenerio.kwargs["number_1"] < 0 and scenerio.kwargs["number_2"] < 0:
-        assert scenerio.result < scenerio.kwargs["number_1"]
-        assert scenerio.result < scenerio.kwargs["number_1"]
+def my_custom_verifier(scenario: Scenario):
+    if scenario.kwargs["number_1"] > 0 and scenario.kwargs["number_2"] > 0:
+        assert scenario.result > scenario.kwargs["number_1"]
+        assert scenario.result > scenario.kwargs["number_1"]
+    elif scenario.kwargs["number_1"] < 0 and scenario.kwargs["number_2"] < 0:
+        assert scenario.result < scenario.kwargs["number_1"]
+        assert scenario.result < scenario.kwargs["number_1"]
     else:
-        assert scenerio.result >= min(scenerio.kwargs.values())
-        assert scenerio.result <= max(scenerio.kwargs.values())
+        assert scenario.result >= min(scenario.kwargs.values())
+        assert scenario.result <= max(scenario.kwargs.values())
 
 
 auto_pytest_magic(add, auto_verify_=my_custom_verifier)
 ```
 
-Custom verification methods should take a single [Scenerio](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/#scenerio) and raise an exception to signify errors.
+Custom verification methods should take a single [Scenario](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/#scenario) and raise an exception to signify errors.
 
 For the full reference of the py.test integration API see the [API reference documentation](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/pytest/).
 

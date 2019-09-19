@@ -1,5 +1,5 @@
 from hypothesis_auto.tester import (
-    Scenerio,
+    Scenario,
     auto_parameters,
     auto_test,
     auto_test_cases,
