@@ -17,6 +17,7 @@ Changelog
 =========
 
 ## 1.1.0 - 18 September 2019
+
 !!! danger
     This release contains breaking changes. In particular to how parameters are passed in to testing functions.
 
