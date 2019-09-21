@@ -295,7 +295,7 @@
         
           <li class="md-nav__item">
   <a href="#pytest-usage" class="md-nav__link">
-    py.test usage
+    pytest usage
   </a>
   
     <nav class="md-nav">
@@ -303,7 +303,7 @@
         
           <li class="md-nav__item">
   <a href="#using-auto_pytest_magic-to-auto-generate-dozens-of-pytest-test-cases" class="md-nav__link">
-    Using auto_pytest_magic to auto-generate dozens of py.test test cases:
+    Using auto_pytest_magic to auto-generate dozens of pytest test cases:
   </a>
   
 </li>
@@ -587,7 +587,7 @@
         
           <li class="md-nav__item">
   <a href="#pytest-usage" class="md-nav__link">
-    py.test usage
+    pytest usage
   </a>
   
     <nav class="md-nav">
@@ -595,7 +595,7 @@
         
           <li class="md-nav__item">
   <a href="#using-auto_pytest_magic-to-auto-generate-dozens-of-pytest-test-cases" class="md-nav__link">
-    Using auto_pytest_magic to auto-generate dozens of py.test test cases:
+    Using auto_pytest_magic to auto-generate dozens of pytest test cases:
   </a>
   
 </li>
@@ -669,7 +669,7 @@
 <ul>
 <li><strong>Type Annotation Powered</strong>: Utilize your function's existing type annotations to build dozens of test cases automatically.</li>
 <li><strong>Low Barrier</strong>: Start utilizing property-based testing in the lowest barrier way possible. Just run <code>auto_test(FUNCTION)</code> to run dozens of test.</li>
-<li><strong>py.test Compatible</strong>: Built-in compatibility with the popular <a href="https://docs.pytest.org/en/latest/">py.test</a> testing framework. This means that you can turn your automatically generated tests into individual py.test test cases with one line.</li>
+<li><strong>pytest Compatible</strong>: Built-in compatibility with the popular <a href="https://docs.pytest.org/en/latest/">pytest</a> testing framework. This means that you can turn your automatically generated tests into individual pytest test cases with one line.</li>
 <li><strong>Scales Up</strong>: As you find your self needing to customize your auto_test cases, you can easily utilize all the features of <a href="https://hypothesis.readthedocs.io/en/latest/">Hypothesis</a>, including custom strategies per a parameter.</li>
 </ul>
 <h2 id="installation">Installation:</h2>
@@ -753,8 +753,8 @@ avoiding the connotation of private parameters.</p>
 
 <p>Custom verification methods should take a single <a href="https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/#scenario">Scenario</a> and raise an exception to signify errors.</p>
 <p>For the full set of parameters, you can pass into auto_test see its <a href="https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/">API reference documentation</a>.</p>
-<h3 id="pytest-usage">py.test usage</h3>
-<h4 id="using-auto_pytest_magic-to-auto-generate-dozens-of-pytest-test-cases">Using <code>auto_pytest_magic</code> to auto-generate dozens of py.test test cases:</h4>
+<h3 id="pytest-usage">pytest usage</h3>
+<h4 id="using-auto_pytest_magic-to-auto-generate-dozens-of-pytest-test-cases">Using <code>auto_pytest_magic</code> to auto-generate dozens of pytest test cases:</h4>
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="k">import</span> <span class="n">auto_pytest_magic</span>
 
 
@@ -806,7 +806,7 @@ avoiding the connotation of private parameters.</p>
 
 
 <p>Custom verification methods should take a single <a href="https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/#scenario">Scenario</a> and raise an exception to signify errors.</p>
-<p>For the full reference of the py.test integration API see the <a href="https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/pytest/">API reference documentation</a>.</p>
+<p>For the full reference of the pytest integration API see the <a href="https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/pytest/">API reference documentation</a>.</p>
 <h2 id="why-create-hypothesis-auto">Why Create hypothesis-auto?</h2>
 <p>I wanted a no/low resistance way to start incorporating property-based tests across my projects. Such a solution that also encouraged the use of type hints was a win/win for me.</p>
 <p>I hope you too find <code>hypothesis-auto</code> useful!</p>
