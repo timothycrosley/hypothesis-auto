@@ -20,7 +20,7 @@ Key Features:
 
 * **Type Annotation Powered**: Utilize your function's existing type annotations to build dozens of test cases automatically.
 * **Low Barrier**: Start utilizing property-based testing in the lowest barrier way possible. Just run `auto_test(FUNCTION)` to run dozens of test.
-* **py.test Compatible**: Built-in compatibility with the popular [py.test](https://docs.pytest.org/en/latest/) testing framework. This means that you can turn your automatically generated tests into individual py.test test cases with one line.
+* **pytest Compatible**: Built-in compatibility with the popular [pytest](https://docs.pytest.org/en/latest/) testing framework. This means that you can turn your automatically generated tests into individual pytest test cases with one line.
 * **Scales Up**: As you find your self needing to customize your auto_test cases, you can easily utilize all the features of [Hypothesis](https://hypothesis.readthedocs.io/en/latest/), including custom strategies per a parameter.
 
 ## Installation:
@@ -117,9 +117,9 @@ Custom verification methods should take a single [Scenario](https://timothycrosl
 
 For the full set of parameters, you can pass into auto_test see its [API reference documentation](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/).
 
-### py.test usage
+### pytest usage
 
-#### Using `auto_pytest_magic` to auto-generate dozens of py.test test cases:
+#### Using `auto_pytest_magic` to auto-generate dozens of pytest test cases:
 
 ```python3
 from hypothesis_auto import auto_pytest_magic
@@ -175,7 +175,7 @@ auto_pytest_magic(add, auto_verify_=my_custom_verifier)
 
 Custom verification methods should take a single [Scenario](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/#scenario) and raise an exception to signify errors.
 
-For the full reference of the py.test integration API see the [API reference documentation](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/pytest/).
+For the full reference of the pytest integration API see the [API reference documentation](https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/pytest/).
 
 ## Why Create hypothesis-auto?
 
