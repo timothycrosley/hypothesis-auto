@@ -56,6 +56,7 @@ def auto_pytest(
             auto_allow_exceptions_=auto_allow_exceptions_,
             auto_limit_=auto_runs_,
             auto_verify_=auto_verify_,
+            **kwargs,
         ),
     )
 
@@ -117,5 +118,6 @@ def auto_pytest_magic(
             auto_allow_exceptions_=auto_allow_exceptions_,
             auto_limit_=auto_runs_,
             auto_verify_=auto_verify_,
+            **kwargs,
         ),
     )(test_function)
