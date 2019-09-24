@@ -1,5 +1,5 @@
 from hypothesis_auto.tester import (
-    Scenerio,
+    Scenario,
     auto_parameters,
     auto_test,
     auto_test_cases,
@@ -11,4 +11,4 @@ try:
 except ImportError:  # pragma: no cover
     pass
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
