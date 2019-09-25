@@ -15,6 +15,10 @@ OR
 
 Changelog
 =========
+## 1.1.2 - 24 September 2019
+
+- Fixed custom strategies not being passed through for pytest integration methods.
+
 ## 1.1.1 - 19 September 2019
 
 - Fixed [Issue #5](https://github.com/timothycrosley/hypothesis-auto/issues/5): typo in Scenario class name
