@@ -42,10 +42,10 @@ auto_pytest_magic(my_function)
 def my_custom_verifier(scenario: Scenario):
     if scenario.kwargs["number_1"] > 0 and scenario.kwargs["number_2"] > 0:
         assert scenario.result > scenario.kwargs["number_1"]
-        assert scenario.result > scenario.kwargs["number_1"]
+        assert scenario.result > scenario.kwargs["number_2"]
     elif scenario.kwargs["number_1"] < 0 and scenario.kwargs["number_2"] < 0:
         assert scenario.result < scenario.kwargs["number_1"]
-        assert scenario.result < scenario.kwargs["number_1"]
+        assert scenario.result < scenario.kwargs["number_2"]
     else:
         assert scenario.result >= min(scenario.kwargs.values())
         assert scenario.result <= max(scenario.kwargs.values())
