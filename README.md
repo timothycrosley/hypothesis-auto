@@ -20,7 +20,7 @@ Key Features:
 
 * **Type Annotation Powered**: Utilize your function's existing type annotations to build dozens of test cases automatically.
 * **Low Barrier**: Start utilizing property-based testing in the lowest barrier way possible. Just run `auto_test(FUNCTION)` to run dozens of test.
-* **pytest Compatible**: Built-in compatibility with the popular [pytest](https://docs.pytest.org/en/latest/) testing framework. This means that you can turn your automatically generated tests into individual pytest test cases with one line.
+* **pytest Compatible**: Like Hypothesis itself, hypothesis-auto has built-in compatibility with the popular [pytest](https://docs.pytest.org/en/latest/) testing framework. This means that you can turn your automatically generated tests into individual pytest test cases with one line.
 * **Scales Up**: As you find your self needing to customize your auto_test cases, you can easily utilize all the features of [Hypothesis](https://hypothesis.readthedocs.io/en/latest/), including custom strategies per a parameter.
 
 ## Installation:
