@@ -15,6 +15,11 @@ OR
 
 Changelog
 =========
+## 1.1.3 - 30 December 2019
+
+- Added compatibility with latest pydantic release
+- Updated to use cruft to keep project structure in sync with latest template
+
 ## 1.1.2 - 24 September 2019
 
 - Fixed custom strategies not being passed through for pytest integration methods.
