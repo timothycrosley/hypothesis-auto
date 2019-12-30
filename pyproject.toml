@@ -29,10 +29,7 @@ pytest-mock = "^1.10"
 pep8-naming = "^0.8.2"
 portray = "^1.3.0"
 cruft = "^1.1"
-
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+numpy = "^1.18.0"
 
 [tool.portray]
 modules = ["hypothesis_auto"]
@@ -42,3 +39,7 @@ favicon = "art/logo.png"
 logo = "art/logo.png"
 name = "material"
 palette = {primary = "teal", accent = "cyan"}
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
