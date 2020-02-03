@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="art/logo.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.2">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -40,7 +40,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="assets/stylesheets/application.1b62728e.css">
       
         <link rel="stylesheet" href="assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -51,12 +51,12 @@
       
     
     
-      <script src="assets/javascripts/modernizr.74668098.js"></script>
+      <script src="assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -688,7 +688,7 @@ avoiding the connotation of private parameters.</p>
 </div>
 <h3 id="framework-independent-usage">Framework independent usage</h3>
 <h4 id="basic-auto_test-usage">Basic <code>auto_test</code> usage:</h4>
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="k">import</span> <span class="n">auto_test</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="kn">import</span> <span class="n">auto_test</span>
 
 
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">number_1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">number_2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -701,7 +701,7 @@ avoiding the connotation of private parameters.</p>
 
 
 <h4 id="adding-an-allowed-exception">Adding an allowed exception:</h4>
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="k">import</span> <span class="n">auto_test</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="kn">import</span> <span class="n">auto_test</span>
 
 
 <span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">number_1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">number_2</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -728,7 +728,7 @@ avoiding the connotation of private parameters.</p>
 
 
 <h4 id="using-auto_test-with-a-custom-verification-method">Using <code>auto_test</code> with a custom verification method:</h4>
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="k">import</span> <span class="n">Scenario</span><span class="p">,</span> <span class="n">auto_test</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="kn">import</span> <span class="n">Scenario</span><span class="p">,</span> <span class="n">auto_test</span>
 
 
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">number_1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">number_2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -755,7 +755,7 @@ avoiding the connotation of private parameters.</p>
 <p>For the full set of parameters, you can pass into auto_test see its <a href="https://timothycrosley.github.io/hypothesis-auto/reference/hypothesis_auto/tester/">API reference documentation</a>.</p>
 <h3 id="pytest-usage">pytest usage</h3>
 <h4 id="using-auto_pytest_magic-to-auto-generate-dozens-of-pytest-test-cases">Using <code>auto_pytest_magic</code> to auto-generate dozens of pytest test cases:</h4>
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="k">import</span> <span class="n">auto_pytest_magic</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="kn">import</span> <span class="n">auto_pytest_magic</span>
 
 
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">number_1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">number_2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -767,7 +767,7 @@ avoiding the connotation of private parameters.</p>
 
 
 <h4 id="using-auto_pytest-to-run-dozens-of-test-case-within-a-temporary-directory">Using <code>auto_pytest</code> to run dozens of test case within a temporary directory:</h4>
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="k">import</span> <span class="n">auto_pytest</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="kn">import</span> <span class="n">auto_pytest</span>
 
 
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">number_1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">number_2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -782,7 +782,7 @@ avoiding the connotation of private parameters.</p>
 
 
 <h4 id="using-auto_pytest_magic-with-a-custom-verification-method">Using <code>auto_pytest_magic</code> with a custom verification method:</h4>
-<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="k">import</span> <span class="n">Scenario</span><span class="p">,</span> <span class="n">auto_pytest</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis_auto</span> <span class="kn">import</span> <span class="n">Scenario</span><span class="p">,</span> <span class="n">auto_pytest</span>
 
 
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">number_1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">number_2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -813,6 +813,7 @@ avoiding the connotation of private parameters.</p>
 <p>~Timothy Crosley</p>
                 
                   
+                
                 
               
               
@@ -867,7 +868,7 @@ avoiding the connotation of private parameters.</p>
       
     </div>
     
-      <script src="assets/javascripts/application.c648116f.js"></script>
+      <script src="assets/javascripts/application.808e90bb.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
       

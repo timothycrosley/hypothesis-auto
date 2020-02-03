@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../art/logo.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.2">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -40,7 +40,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
       
         <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -51,12 +51,12 @@
       
     
     
-      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -1003,6 +1003,10 @@
 
             <span class="n">__annotations__</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;returns&quot;</span><span class="p">:</span> <span class="n">return_type</span><span class="p">}</span>
 
+            <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+
+                <span class="n">arbitrary_types_allowed</span> <span class="o">=</span> <span class="bp">True</span>
+
         <span class="n">return_model</span> <span class="o">=</span> <span class="n">ReturnModel</span>
 
     <span class="k">def</span> <span class="nf">test_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
@@ -1258,59 +1262,59 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 <ul>
 <li><em>auto_limit_</em>: Number of strategies combinations to run the given function against.</li>
 </ul>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">auto_parameters</span><span class="ss">(</span>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="n">def</span> <span class="nf">auto_parameters</span><span class="p">(</span>
 
-    <span class="nv">auto_function_</span>: <span class="nv">Callable</span>, <span class="o">*</span><span class="nv">args</span>, <span class="nv">auto_limit_</span>: <span class="nv">int</span> <span class="o">=</span> <span class="mi">50</span>, <span class="o">**</span><span class="nv">kwargs</span>
+    <span class="n">auto_function_</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">auto_limit_</span><span class="p">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
 
-<span class="ss">)</span> <span class="o">-&gt;</span> <span class="nv">Generator</span>[<span class="nv">Parameters</span>, <span class="nv">None</span>, <span class="nv">None</span>]:
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Parameters</span><span class="p">,</span> <span class="n">None</span><span class="p">,</span> <span class="n">None</span><span class="p">]:</span>
 
-    <span class="s2">&quot;&quot;&quot;</span><span class="s">Generates parameters from the given callable up to the specified limit</span>
+    <span class="s2">&quot;&quot;&quot;Generates parameters from the given callable up to the specified limit</span>
 
-    <span class="ss">(</span>`<span class="nv">auto_limit_</span>` <span class="nv">parameter</span><span class="ss">)</span>.
+<span class="s2">    (`auto_limit_` parameter).</span>
 
-    <span class="nv">By</span> <span class="nv">default</span> <span class="nv">auto_parameters</span> <span class="nv">uses</span> <span class="nv">type</span> <span class="nv">annotations</span> <span class="nv">to</span> <span class="nv">automatically</span> <span class="nv">decide</span> <span class="nv">on</span> <span class="nv">strategies</span> <span class="nv">via</span> <span class="nv">the</span>
+<span class="s2">    By default auto_parameters uses type annotations to automatically decide on strategies via the</span>
 
-    <span class="nv">hypothesis</span> <span class="nv">builds</span> <span class="nv">strategy</span>. <span class="nv">You</span> <span class="nv">can</span> <span class="nv">override</span> <span class="nv">individual</span> <span class="nv">strategies</span> <span class="nv">by</span> <span class="nv">passing</span> <span class="nv">them</span> <span class="nv">in</span> <span class="nv">under</span>
+<span class="s2">    hypothesis builds strategy. You can override individual strategies by passing them in under</span>
 
-    <span class="nv">the</span> <span class="nv">corresponding</span> `<span class="o">*</span><span class="nv">arg</span>` <span class="nv">or</span> `<span class="o">**</span><span class="nv">kwarg</span>` <span class="nv">OR</span> <span class="nv">you</span> <span class="nv">can</span> <span class="nv">pass</span> <span class="nv">in</span> <span class="nv">specific</span> <span class="nv">values</span> <span class="nv">that</span> <span class="nv">must</span> <span class="nv">be</span> <span class="nv">used</span> <span class="k">for</span>
+<span class="s2">    the corresponding `*arg` or `**kwarg` OR you can pass in specific values that must be used for</span>
 
-    <span class="nv">certain</span> <span class="nv">parameters</span> <span class="k">while</span> <span class="nv">letting</span> <span class="nv">others</span> <span class="nv">be</span> <span class="nv">auto</span> <span class="nv">generated</span>.
+<span class="s2">    certain parameters while letting others be auto generated.</span>
 
-    <span class="nv">All</span> `<span class="o">*</span><span class="nv">arg</span>` <span class="nv">and</span> `<span class="o">**</span><span class="nv">kwargs</span>` <span class="nv">are</span> <span class="nv">automatically</span> <span class="nv">passed</span> <span class="nv">along</span> <span class="nv">to</span>
+<span class="s2">    All `*arg` and `**kwargs` are automatically passed along to</span>
 
-    `<span class="nv">hypothesis</span>.<span class="nv">strategies</span>.<span class="nv">builds</span>` <span class="nv">to</span> <span class="nv">enable</span> <span class="nv">this</span>. <span class="nv">Non</span> <span class="nv">strategies</span> <span class="nv">are</span> <span class="nv">automatically</span> <span class="nv">converted</span>
+<span class="s2">    `hypothesis.strategies.builds` to enable this. Non strategies are automatically converted</span>
 
-    <span class="nv">to</span> <span class="nv">strategies</span> <span class="nv">using</span> `<span class="nv">hypothesis</span>.<span class="nv">strategies</span>.<span class="nv">just</span>`.
+<span class="s2">    to strategies using `hypothesis.strategies.just`.</span>
 
-    <span class="nv">Except</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">following</span> <span class="nv">option</span>:
+<span class="s2">    Except for the following option:</span>
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_limit_</span><span class="o">*</span>: <span class="nv">Number</span> <span class="nv">of</span> <span class="nv">strategies</span> <span class="nv">combinations</span> <span class="nv">to</span> <span class="nv">run</span> <span class="nv">the</span> <span class="nv">given</span> <span class="nv">function</span> <span class="nv">against</span>.
+<span class="s2">    - *auto_limit_*: Number of strategies combinations to run the given function against.</span>
 
-    <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
 
-    <span class="nv">strategy_args</span> <span class="o">=</span> [<span class="nv">arg</span> <span class="k">if</span> <span class="nv">isinstance</span><span class="ss">(</span><span class="nv">arg</span>, <span class="nv">SearchStrategy</span><span class="ss">)</span> <span class="k">else</span> <span class="nv">just</span><span class="ss">(</span><span class="nv">arg</span><span class="ss">)</span> <span class="k">for</span> <span class="nv">arg</span> <span class="nv">in</span> <span class="nv">args</span>]
+    <span class="n">strategy_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">arg</span> <span class="k">if</span> <span class="nf">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">SearchStrategy</span><span class="p">)</span> <span class="k">else</span> <span class="nf">just</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="k">in</span> <span class="n">args</span><span class="p">]</span>
 
-    <span class="nv">strategy_kwargs</span> <span class="o">=</span> {
+    <span class="n">strategy_kwargs</span> <span class="o">=</span> <span class="err">{</span>
 
-        <span class="nv">name</span>: <span class="nv">value</span> <span class="k">if</span> <span class="nv">isinstance</span><span class="ss">(</span><span class="nv">value</span>, <span class="nv">SearchStrategy</span><span class="ss">)</span> <span class="k">else</span> <span class="nv">just</span><span class="ss">(</span><span class="nv">value</span><span class="ss">)</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">value</span> <span class="k">if</span> <span class="nf">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">SearchStrategy</span><span class="p">)</span> <span class="k">else</span> <span class="nf">just</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="nv">name</span>, <span class="nv">value</span> <span class="nv">in</span> <span class="nv">kwargs</span>.<span class="nv">items</span><span class="ss">()</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="k">in</span> <span class="n">kwargs</span><span class="p">.</span><span class="nf">items</span><span class="p">()</span>
 
-    }
+    <span class="err">}</span>
 
-    <span class="nv">def</span> <span class="nv">pass_along_variables</span><span class="ss">(</span><span class="o">*</span><span class="nv">args</span>, <span class="o">**</span><span class="nv">kwargs</span><span class="ss">)</span>:
+    <span class="n">def</span> <span class="nf">pass_along_variables</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="k">return</span> <span class="nv">Parameters</span><span class="ss">(</span><span class="nv">args</span><span class="o">=</span><span class="nv">args</span>, <span class="nv">kwargs</span><span class="o">=</span><span class="nv">kwargs</span><span class="ss">)</span>
+        <span class="k">return</span> <span class="nf">Parameters</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="nv">pass_along_variables</span>.<span class="nv">__signature__</span> <span class="o">=</span> <span class="nv">signature</span><span class="ss">(</span><span class="nv">auto_function_</span><span class="ss">)</span>  # <span class="nv">type</span>: <span class="nv">ignore</span>
+    <span class="n">pass_along_variables</span><span class="p">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="nf">signature</span><span class="p">(</span><span class="n">auto_function_</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
-    <span class="nv">pass_along_variables</span>.<span class="nv">__annotations__</span> <span class="o">=</span> <span class="nv">getattr</span><span class="ss">(</span><span class="nv">auto_function_</span>, <span class="s2">&quot;</span><span class="s">__annotations__</span><span class="s2">&quot;</span>, {}<span class="ss">)</span>
+    <span class="n">pass_along_variables</span><span class="p">.</span><span class="n">__annotations__</span> <span class="o">=</span> <span class="nf">getattr</span><span class="p">(</span><span class="n">auto_function_</span><span class="p">,</span> <span class="s2">&quot;__annotations__&quot;</span><span class="p">,</span> <span class="err">{}</span><span class="p">)</span>
 
-    <span class="nv">strategy</span> <span class="o">=</span> <span class="nv">builds</span><span class="ss">(</span><span class="nv">pass_along_variables</span>, <span class="o">*</span><span class="nv">strategy_args</span>, <span class="o">**</span><span class="nv">strategy_kwargs</span><span class="ss">)</span>
+    <span class="n">strategy</span> <span class="o">=</span> <span class="nf">builds</span><span class="p">(</span><span class="n">pass_along_variables</span><span class="p">,</span> <span class="o">*</span><span class="n">strategy_args</span><span class="p">,</span> <span class="o">**</span><span class="n">strategy_kwargs</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="nv">_</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="nv">auto_limit_</span><span class="ss">)</span>:
+    <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">auto_limit_</span><span class="p">):</span>
 
-        <span class="nv">yield</span> <span class="nv">strategy</span>.<span class="nv">example</span><span class="ss">()</span>
+        <span class="n">yield</span> <span class="n">strategy</span><span class="p">.</span><span class="nf">example</span><span class="p">()</span>
 </pre></div>
 
 
@@ -1345,73 +1349,73 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
   of the functions return value. The callback function should raise an AssertionError if the
   return value does not match expectations.</li>
 </ul>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">auto_test</span><span class="ss">(</span>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="n">def</span><span class="w"> </span><span class="n">auto_test</span><span class="p">(</span><span class="w"></span>
 
-    <span class="nv">auto_function_</span>: <span class="nv">Callable</span>,
+<span class="w">    </span><span class="nl">auto_function_</span><span class="p">:</span><span class="w"> </span><span class="n">Callable</span><span class="p">,</span><span class="w"></span>
 
-    <span class="o">*</span><span class="nv">args</span>,
+<span class="w">    </span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"></span>
 
-    <span class="nv">auto_allow_exceptions_</span>: <span class="nv">Union</span>[<span class="nv">Tuple</span>[<span class="nv">BaseException</span>], <span class="nv">Tuple</span>] <span class="o">=</span> <span class="ss">()</span>,
+<span class="w">    </span><span class="nl">auto_allow_exceptions_</span><span class="p">:</span><span class="w"> </span><span class="ow">Union</span><span class="o">[</span><span class="n">Tuple[BaseException</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">Tuple</span><span class="err">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(),</span><span class="w"></span>
 
-    <span class="nv">auto_runs_</span>: <span class="nv">int</span> <span class="o">=</span> <span class="mi">50</span>,
+<span class="w">    </span><span class="nl">auto_runs_</span><span class="p">:</span><span class="w"> </span><span class="nc">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"></span>
 
-    <span class="nv">auto_verify_</span>: <span class="nv">Optional</span>[<span class="nv">Callable</span>[[<span class="nv">Scenario</span>], <span class="nv">Any</span>]] <span class="o">=</span> <span class="nv">None</span>,
+<span class="w">    </span><span class="nl">auto_verify_</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">Callable[[Scenario</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="ow">Any</span><span class="err">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">,</span><span class="w"></span>
 
-    <span class="o">**</span><span class="nv">kwargs</span>
+<span class="w">    </span><span class="o">**</span><span class="n">kwargs</span><span class="w"></span>
 
-<span class="ss">)</span> <span class="o">-&gt;</span> <span class="nv">None</span>:
+<span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">None</span><span class="err">:</span><span class="w"></span>
 
-    <span class="s2">&quot;&quot;&quot;</span><span class="s">A simple utility function for hypothesis that enables fully automatic testing for a</span>
+<span class="w">    </span><span class="ss">&quot;&quot;&quot;A simple utility function for hypothesis that enables fully automatic testing for a</span>
 
-    <span class="nv">type</span> <span class="nv">hinted</span> <span class="nv">callable</span>, <span class="nv">including</span> <span class="k">return</span> <span class="nv">type</span> <span class="nv">verification</span>.
+<span class="ss">    type hinted callable, including return type verification.</span>
 
-    <span class="nv">By</span> <span class="nv">default</span> <span class="nv">auto_test</span> <span class="nv">uses</span> <span class="nv">type</span> <span class="nv">annotations</span> <span class="nv">to</span> <span class="nv">automatically</span> <span class="nv">decide</span> <span class="nv">on</span> <span class="nv">strategies</span> <span class="nv">via</span> <span class="nv">the</span>
+<span class="ss">    By default auto_test uses type annotations to automatically decide on strategies via the</span>
 
-    <span class="nv">hypothesis</span> <span class="nv">builds</span> <span class="nv">strategy</span>. <span class="nv">You</span> <span class="nv">can</span> <span class="nv">override</span> <span class="nv">individual</span> <span class="nv">strategies</span> <span class="nv">by</span> <span class="nv">passing</span> <span class="nv">them</span> <span class="nv">in</span> <span class="nv">under</span>
+<span class="ss">    hypothesis builds strategy. You can override individual strategies by passing them in under</span>
 
-    <span class="nv">the</span> <span class="nv">corresponding</span> `<span class="o">*</span><span class="nv">arg</span>` <span class="nv">or</span> `<span class="o">**</span><span class="nv">kwarg</span>` <span class="nv">OR</span> <span class="nv">you</span> <span class="nv">can</span> <span class="nv">pass</span> <span class="nv">in</span> <span class="nv">specific</span> <span class="nv">values</span> <span class="nv">that</span> <span class="nv">must</span> <span class="nv">be</span> <span class="nv">used</span> <span class="k">for</span>
+<span class="ss">    the corresponding `*arg` or `**kwarg` OR you can pass in specific values that must be used for</span>
 
-    <span class="nv">certain</span> <span class="nv">parameters</span> <span class="k">while</span> <span class="nv">letting</span> <span class="nv">others</span> <span class="nv">be</span> <span class="nv">auto</span> <span class="nv">generated</span>.
+<span class="ss">    certain parameters while letting others be auto generated.</span>
 
-    <span class="nv">All</span> `<span class="o">*</span><span class="nv">arg</span>` <span class="nv">and</span> `<span class="o">**</span><span class="nv">kwargs</span>` <span class="nv">are</span> <span class="nv">automatically</span> <span class="nv">passed</span> <span class="nv">along</span> <span class="nv">to</span>
+<span class="ss">    All `*arg` and `**kwargs` are automatically passed along to</span>
 
-    `<span class="nv">hypothesis</span>.<span class="nv">strategies</span>.<span class="nv">builds</span>` <span class="nv">to</span> <span class="nv">enable</span> <span class="nv">this</span>. <span class="nv">Non</span> <span class="nv">strategies</span> <span class="nv">are</span> <span class="nv">automatically</span> <span class="nv">converted</span>
+<span class="ss">    `hypothesis.strategies.builds` to enable this. Non strategies are automatically converted</span>
 
-    <span class="nv">to</span> <span class="nv">strategies</span> <span class="nv">using</span> `<span class="nv">hypothesis</span>.<span class="nv">strategies</span>.<span class="nv">just</span>`.
+<span class="ss">    to strategies using `hypothesis.strategies.just`.</span>
 
-    <span class="nv">Except</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">following</span> <span class="nv">options</span>:
+<span class="ss">    Except for the following options:</span>
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_allow_exceptions_</span><span class="o">*</span>: <span class="nv">A</span> <span class="nv">tuple</span> <span class="nv">of</span> <span class="nv">exceptions</span> <span class="nv">that</span> <span class="nv">are</span> <span class="nv">acceptable</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">function</span> <span class="nv">to</span> <span class="nv">raise</span>
+<span class="ss">    - *auto_allow_exceptions_*: A tuple of exceptions that are acceptable for the function to raise</span>
 
-      <span class="nv">and</span> <span class="nv">will</span> <span class="nv">no</span> <span class="nv">be</span> <span class="nv">considered</span> <span class="nv">a</span> <span class="nv">test</span> <span class="nv">error</span>.
+<span class="ss">      and will no be considered a test error.</span>
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_runs_</span><span class="o">*</span>: <span class="nv">Number</span> <span class="nv">of</span> <span class="nv">strategies</span> <span class="nv">combinations</span> <span class="nv">to</span> <span class="nv">run</span> <span class="nv">the</span> <span class="nv">given</span> <span class="nv">function</span> <span class="nv">against</span>.
+<span class="ss">    - *auto_runs_*: Number of strategies combinations to run the given function against.</span>
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_verify_</span><span class="o">*</span>: <span class="nv">An</span> <span class="nv">optional</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">that</span> <span class="nv">will</span> <span class="nv">be</span> <span class="nv">called</span> <span class="nv">to</span> <span class="nv">allow</span> <span class="nv">custom</span> <span class="nv">verification</span>
+<span class="ss">    - *auto_verify_*: An optional callback function that will be called to allow custom verification</span>
 
-      <span class="nv">of</span> <span class="nv">the</span> <span class="nv">functions</span> <span class="k">return</span> <span class="nv">value</span>. <span class="nv">The</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">should</span> <span class="nv">raise</span> <span class="nv">an</span> <span class="nv">AssertionError</span> <span class="k">if</span> <span class="nv">the</span>
+<span class="ss">      of the functions return value. The callback function should raise an AssertionError if the</span>
 
-      <span class="k">return</span> <span class="nv">value</span> <span class="nv">does</span> <span class="nv">not</span> <span class="nv">match</span> <span class="nv">expectations</span>.
+<span class="ss">      return value does not match expectations.</span>
 
-    <span class="s2">&quot;&quot;&quot;</span>
+<span class="ss">    &quot;&quot;&quot;</span><span class="w"></span>
 
-    <span class="k">for</span> <span class="nv">test_case</span> <span class="nv">in</span> <span class="nv">auto_test_cases</span><span class="ss">(</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">test_case</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">auto_test_cases</span><span class="p">(</span><span class="w"></span>
 
-        <span class="nv">auto_function_</span>,
+<span class="w">        </span><span class="n">auto_function_</span><span class="p">,</span><span class="w"></span>
 
-        <span class="o">*</span><span class="nv">args</span>,
+<span class="w">        </span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"></span>
 
-        <span class="nv">auto_allow_exceptions_</span><span class="o">=</span><span class="nv">auto_allow_exceptions_</span>,
+<span class="w">        </span><span class="n">auto_allow_exceptions_</span><span class="o">=</span><span class="n">auto_allow_exceptions_</span><span class="p">,</span><span class="w"></span>
 
-        <span class="nv">auto_limit_</span><span class="o">=</span><span class="nv">auto_runs_</span>,
+<span class="w">        </span><span class="n">auto_limit_</span><span class="o">=</span><span class="n">auto_runs_</span><span class="p">,</span><span class="w"></span>
 
-        <span class="nv">auto_verify_</span><span class="o">=</span><span class="nv">auto_verify_</span>,
+<span class="w">        </span><span class="n">auto_verify_</span><span class="o">=</span><span class="n">auto_verify_</span><span class="p">,</span><span class="w"></span>
 
-        <span class="o">**</span><span class="nv">kwargs</span>
+<span class="w">        </span><span class="o">**</span><span class="n">kwargs</span><span class="w"></span>
 
-    <span class="ss">)</span>:
+<span class="w">    </span><span class="p">)</span><span class="err">:</span><span class="w"></span>
 
-        <span class="nv">test_case</span><span class="ss">()</span>
+<span class="w">        </span><span class="n">test_case</span><span class="p">()</span><span class="w"></span>
 </pre></div>
 
 
@@ -1446,65 +1450,65 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
   of the functions return value. The callback function should raise an AssertionError if the
   return value does not match expectations.</li>
 </ul>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">auto_test_cases</span><span class="ss">(</span>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="n">def</span><span class="w"> </span><span class="n">auto_test_cases</span><span class="p">(</span><span class="w"></span>
 
-    <span class="nv">auto_function_</span>: <span class="nv">Callable</span>,
+<span class="w">    </span><span class="nl">auto_function_</span><span class="p">:</span><span class="w"> </span><span class="n">Callable</span><span class="p">,</span><span class="w"></span>
 
-    <span class="o">*</span><span class="nv">args</span>,
+<span class="w">    </span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"></span>
 
-    <span class="nv">auto_allow_exceptions_</span>: <span class="nv">Union</span>[<span class="nv">Tuple</span>[<span class="nv">BaseException</span>], <span class="nv">Tuple</span>] <span class="o">=</span> <span class="ss">()</span>,
+<span class="w">    </span><span class="nl">auto_allow_exceptions_</span><span class="p">:</span><span class="w"> </span><span class="ow">Union</span><span class="o">[</span><span class="n">Tuple[BaseException</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">Tuple</span><span class="err">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(),</span><span class="w"></span>
 
-    <span class="nv">auto_limit_</span>: <span class="nv">int</span> <span class="o">=</span> <span class="mi">50</span>,
+<span class="w">    </span><span class="nl">auto_limit_</span><span class="p">:</span><span class="w"> </span><span class="nc">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"></span>
 
-    <span class="nv">auto_verify_</span>: <span class="nv">Optional</span>[<span class="nv">Callable</span>[[<span class="nv">Scenario</span>], <span class="nv">Any</span>]] <span class="o">=</span> <span class="nv">None</span>,
+<span class="w">    </span><span class="nl">auto_verify_</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">Callable[[Scenario</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="ow">Any</span><span class="err">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">,</span><span class="w"></span>
 
-    <span class="o">**</span><span class="nv">kwargs</span>
+<span class="w">    </span><span class="o">**</span><span class="n">kwargs</span><span class="w"></span>
 
-<span class="ss">)</span> <span class="o">-&gt;</span> <span class="nv">Generator</span>[<span class="nv">TestCase</span>, <span class="nv">None</span>, <span class="nv">None</span>]:
+<span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Generator</span><span class="o">[</span><span class="n">TestCase, None, None</span><span class="o">]</span><span class="err">:</span><span class="w"></span>
 
-    <span class="s2">&quot;&quot;&quot;</span><span class="s">Generates test cases from the given callable up to the specified limit</span>
+<span class="w">    </span><span class="ss">&quot;&quot;&quot;Generates test cases from the given callable up to the specified limit</span>
 
-    <span class="ss">(</span>`<span class="nv">auto_limit_</span>` <span class="nv">parameter</span><span class="ss">)</span>.
+<span class="ss">    (`auto_limit_` parameter).</span>
 
-    <span class="nv">By</span> <span class="nv">default</span> <span class="nv">auto_test_cases</span> <span class="nv">uses</span> <span class="nv">type</span> <span class="nv">annotations</span> <span class="nv">to</span> <span class="nv">automatically</span> <span class="nv">decide</span> <span class="nv">on</span> <span class="nv">strategies</span> <span class="nv">via</span> <span class="nv">the</span>
+<span class="ss">    By default auto_test_cases uses type annotations to automatically decide on strategies via the</span>
 
-    <span class="nv">hypothesis</span> <span class="nv">builds</span> <span class="nv">strategy</span>. <span class="nv">You</span> <span class="nv">can</span> <span class="nv">override</span> <span class="nv">individual</span> <span class="nv">strategies</span> <span class="nv">by</span> <span class="nv">passing</span> <span class="nv">them</span> <span class="nv">in</span> <span class="nv">under</span>
+<span class="ss">    hypothesis builds strategy. You can override individual strategies by passing them in under</span>
 
-    <span class="nv">the</span> <span class="nv">corresponding</span> `<span class="o">*</span><span class="nv">arg</span>` <span class="nv">or</span> `<span class="o">**</span><span class="nv">kwarg</span>` <span class="nv">OR</span> <span class="nv">you</span> <span class="nv">can</span> <span class="nv">pass</span> <span class="nv">in</span> <span class="nv">specific</span> <span class="nv">values</span> <span class="nv">that</span> <span class="nv">must</span> <span class="nv">be</span> <span class="nv">used</span> <span class="k">for</span>
+<span class="ss">    the corresponding `*arg` or `**kwarg` OR you can pass in specific values that must be used for</span>
 
-    <span class="nv">certain</span> <span class="nv">parameters</span> <span class="k">while</span> <span class="nv">letting</span> <span class="nv">others</span> <span class="nv">be</span> <span class="nv">auto</span> <span class="nv">generated</span>.
+<span class="ss">    certain parameters while letting others be auto generated.</span>
 
-    <span class="nv">All</span> `<span class="o">*</span><span class="nv">arg</span>` <span class="nv">and</span> `<span class="o">**</span><span class="nv">kwargs</span>` <span class="nv">are</span> <span class="nv">automatically</span> <span class="nv">passed</span> <span class="nv">along</span> <span class="nv">to</span>
+<span class="ss">    All `*arg` and `**kwargs` are automatically passed along to</span>
 
-    `<span class="nv">hypothesis</span>.<span class="nv">strategies</span>.<span class="nv">builds</span>` <span class="nv">to</span> <span class="nv">enable</span> <span class="nv">this</span>. <span class="nv">Non</span> <span class="nv">strategies</span> <span class="nv">are</span> <span class="nv">automatically</span> <span class="nv">converted</span>
+<span class="ss">    `hypothesis.strategies.builds` to enable this. Non strategies are automatically converted</span>
 
-    <span class="nv">to</span> <span class="nv">strategies</span> <span class="nv">using</span> `<span class="nv">hypothesis</span>.<span class="nv">strategies</span>.<span class="nv">just</span>`.
+<span class="ss">    to strategies using `hypothesis.strategies.just`.</span>
 
-    <span class="nv">Except</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">following</span> <span class="nv">options</span>:
+<span class="ss">    Except for the following options:</span>
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_allow_exceptions_</span><span class="o">*</span>: <span class="nv">A</span> <span class="nv">tuple</span> <span class="nv">of</span> <span class="nv">exceptions</span> <span class="nv">that</span> <span class="nv">are</span> <span class="nv">acceptable</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">function</span> <span class="nv">to</span> <span class="nv">raise</span>
+<span class="ss">    - *auto_allow_exceptions_*: A tuple of exceptions that are acceptable for the function to raise</span>
 
-      <span class="nv">and</span> <span class="nv">will</span> <span class="nv">no</span> <span class="nv">be</span> <span class="nv">considered</span> <span class="nv">a</span> <span class="nv">test</span> <span class="nv">error</span>.
+<span class="ss">      and will no be considered a test error.</span>
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_limit_</span><span class="o">*</span>: <span class="nv">Number</span> <span class="nv">of</span> <span class="nv">strategies</span> <span class="nv">combinations</span> <span class="nv">to</span> <span class="nv">run</span> <span class="nv">the</span> <span class="nv">given</span> <span class="nv">function</span> <span class="nv">against</span>.
+<span class="ss">    - *auto_limit_*: Number of strategies combinations to run the given function against.</span>
 
-    <span class="o">-</span> <span class="o">*</span><span class="nv">auto_verify_</span><span class="o">*</span>: <span class="nv">An</span> <span class="nv">optional</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">that</span> <span class="nv">will</span> <span class="nv">be</span> <span class="nv">called</span> <span class="nv">to</span> <span class="nv">allow</span> <span class="nv">custom</span> <span class="nv">verification</span>
+<span class="ss">    - *auto_verify_*: An optional callback function that will be called to allow custom verification</span>
 
-      <span class="nv">of</span> <span class="nv">the</span> <span class="nv">functions</span> <span class="k">return</span> <span class="nv">value</span>. <span class="nv">The</span> <span class="nv">callback</span> <span class="nv">function</span> <span class="nv">should</span> <span class="nv">raise</span> <span class="nv">an</span> <span class="nv">AssertionError</span> <span class="k">if</span> <span class="nv">the</span>
+<span class="ss">      of the functions return value. The callback function should raise an AssertionError if the</span>
 
-      <span class="k">return</span> <span class="nv">value</span> <span class="nv">does</span> <span class="nv">not</span> <span class="nv">match</span> <span class="nv">expectations</span>.
+<span class="ss">      return value does not match expectations.</span>
 
-    <span class="s2">&quot;&quot;&quot;</span>
+<span class="ss">    &quot;&quot;&quot;</span><span class="w"></span>
 
-    <span class="nv">test_function</span> <span class="o">=</span> <span class="nv">_test_function</span><span class="ss">(</span>
+<span class="w">    </span><span class="n">test_function</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_test_function</span><span class="p">(</span><span class="w"></span>
 
-        <span class="nv">auto_function_</span>, <span class="nv">auto_verify_</span><span class="o">=</span><span class="nv">auto_verify_</span>, <span class="nv">auto_allow_exceptions_</span><span class="o">=</span><span class="nv">auto_allow_exceptions_</span>
+<span class="w">        </span><span class="n">auto_function_</span><span class="p">,</span><span class="w"> </span><span class="n">auto_verify_</span><span class="o">=</span><span class="n">auto_verify_</span><span class="p">,</span><span class="w"> </span><span class="n">auto_allow_exceptions_</span><span class="o">=</span><span class="n">auto_allow_exceptions_</span><span class="w"></span>
 
-    <span class="ss">)</span>
+<span class="w">    </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">for</span> <span class="nv">parameters</span> <span class="nv">in</span> <span class="nv">auto_parameters</span><span class="ss">(</span><span class="nv">auto_function_</span>, <span class="o">*</span><span class="nv">args</span>, <span class="nv">auto_limit_</span><span class="o">=</span><span class="nv">auto_limit_</span>, <span class="o">**</span><span class="nv">kwargs</span><span class="ss">)</span>:
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="k">parameters</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">auto_parameters</span><span class="p">(</span><span class="n">auto_function_</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">auto_limit_</span><span class="o">=</span><span class="n">auto_limit_</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
 
-        <span class="nv">yield</span> <span class="nv">TestCase</span><span class="ss">(</span><span class="nv">parameters</span><span class="o">=</span><span class="nv">parameters</span>, <span class="nv">test_function</span><span class="o">=</span><span class="nv">test_function</span><span class="ss">)</span>
+<span class="w">        </span><span class="n">yield</span><span class="w"> </span><span class="n">TestCase</span><span class="p">(</span><span class="k">parameters</span><span class="o">=</span><span class="k">parameters</span><span class="p">,</span><span class="w"> </span><span class="n">test_function</span><span class="o">=</span><span class="n">test_function</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 
 
@@ -1517,19 +1521,19 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 
 
 <p>Attempts to automatically test every public function within a module. For the brave only.</p>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">auto_test_module</span><span class="ss">(</span><span class="nv">module</span>: <span class="nv">ModuleType</span><span class="ss">)</span> <span class="o">-&gt;</span> <span class="nv">None</span>:
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="n">def</span> <span class="n">auto_test_module</span><span class="p">(</span><span class="n">module</span><span class="p">:</span> <span class="n">ModuleType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">None</span><span class="p">:</span>
 
-    <span class="s2">&quot;&quot;&quot;</span><span class="s">Attempts to automatically test every public function within a module. For the brave only.</span><span class="s2">&quot;&quot;&quot;</span>
+    <span class="ss">&quot;&quot;&quot;Attempts to automatically test every public function within a module. For the brave only.&quot;&quot;&quot;</span>
 
-    <span class="k">for</span> <span class="nv">attribute_name</span> <span class="nv">in</span> <span class="nv">dir</span><span class="ss">(</span><span class="nv">module</span><span class="ss">)</span>:
+    <span class="k">for</span> <span class="n">attribute_name</span> <span class="k">in</span> <span class="n">dir</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
 
-        <span class="k">if</span> <span class="nv">not</span> <span class="nv">attribute_name</span>.<span class="nv">startswith</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">_</span><span class="s2">&quot;</span><span class="ss">)</span>:
+        <span class="k">if</span> <span class="k">not</span> <span class="n">attribute_name</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="ss">&quot;_&quot;</span><span class="p">):</span>
 
-            <span class="nv">attribute</span> <span class="o">=</span> <span class="nv">getattr</span><span class="ss">(</span><span class="nv">module</span>, <span class="nv">attribute_name</span><span class="ss">)</span>
+            <span class="n">attribute</span> <span class="o">=</span> <span class="n">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">attribute_name</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="nv">isfunction</span><span class="ss">(</span><span class="nv">attribute</span><span class="ss">)</span>:
+            <span class="k">if</span> <span class="n">isfunction</span><span class="p">(</span><span class="n">attribute</span><span class="p">):</span>
 
-                <span class="nv">auto_test</span><span class="ss">(</span><span class="nv">attribute</span><span class="ss">)</span>
+                <span class="n">auto_test</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span>
 </pre></div>
 
 
@@ -1697,23 +1701,23 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 
 
 <p>Represents an individual auto generated test case. To run the test case simply call() it.</p>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">class</span> <span class="nv">TestCase</span><span class="ss">(</span><span class="nv">NamedTuple</span><span class="ss">)</span>:
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="k">class</span> <span class="n">TestCase</span>(<span class="n">NamedTuple</span>):
 
-    <span class="s2">&quot;&quot;&quot;</span><span class="s">Represents an individual auto generated test case. To run the test case simply call() it.</span><span class="s2">&quot;&quot;&quot;</span>
+    <span class="s">&quot;&quot;&quot;Represents an individual auto generated test case. To run the test case simply call() it.&quot;&quot;&quot;</span>
 
-    <span class="nv">parameters</span>: <span class="nv">Parameters</span>
+    <span class="n">parameters:</span> <span class="n">Parameters</span>
 
-    <span class="nv">test_function</span>: <span class="nv">Callable</span>
+    <span class="n">test_function:</span> <span class="nb">Callable</span>
 
-    <span class="nv">def</span> <span class="nv">__call__</span><span class="ss">(</span><span class="nv">self</span><span class="ss">)</span> <span class="o">-&gt;</span> <span class="nv">Any</span>:
+    <span class="n">def</span> <span class="n">__call__</span>(<span class="k">self</span>) -&gt; <span class="n">Any:</span>
 
-        <span class="s2">&quot;&quot;&quot;</span><span class="s">Calls the given test case returning the called functions result on success or</span>
+        <span class="s">&quot;&quot;&quot;Calls the given test case returning the called functions result on success or</span>
 
-        <span class="nv">Raising</span> <span class="nv">an</span> <span class="nv">exception</span> <span class="nv">on</span> <span class="nv">error</span>
+<span class="s">        Raising an exception on error</span>
 
-        <span class="s2">&quot;&quot;&quot;</span>
+<span class="s">        &quot;&quot;&quot;</span>
 
-        <span class="k">return</span> <span class="nv">self</span>.<span class="nv">test_function</span><span class="ss">(</span><span class="o">*</span><span class="nv">self</span>.<span class="nv">parameters</span>.<span class="nv">args</span>, <span class="o">**</span><span class="nv">self</span>.<span class="nv">parameters</span>.<span class="nv">kwargs</span><span class="ss">)</span>
+        <span class="k">return</span> <span class="k">self</span>.<span class="n">test_function</span>(*<span class="k">self</span>.<span class="n">parameters</span>.<span class="n">args</span>, **<span class="k">self</span>.<span class="n">parameters</span>.<span class="n">kwargs</span>)
 </pre></div>
 
 
@@ -1760,6 +1764,7 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
 <p>Raises ValueError if the value is not present.</p>
                 
                   
+                
                 
               
               
@@ -1814,7 +1819,7 @@ to strategies using <code>hypothesis.strategies.just</code>.</p>
       
     </div>
     
-      <script src="../../../assets/javascripts/application.c648116f.js"></script>
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
