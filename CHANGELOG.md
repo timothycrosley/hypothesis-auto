@@ -15,6 +15,10 @@ OR
 
 Changelog
 =========
+## 1.1.4 - 2 February 2020
+- Added compatibility with the latest hypothesis release
+- Added return validation support for arbitrary types
+
 ## 1.1.3 - 30 December 2019
 
 - Added compatibility with latest pydantic release

@@ -65,6 +65,9 @@ def _test_function(
         class ReturnModel(BaseModel):
             __annotations__ = {"returns": return_type}
 
+            class Config:
+                arbitrary_types_allowed = True
+
         return_model = ReturnModel
 
     def test_function(*args, **kwargs) -> Any:
