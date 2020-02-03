@@ -15,7 +15,7 @@ OR
 
 Changelog
 =========
-## 1.1.4 - 2 February 2020
+## 1.1.4 - 3 February 2020
 - Added compatibility with the latest hypothesis release
 - Added return validation support for arbitrary types
 
