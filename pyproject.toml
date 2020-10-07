@@ -5,6 +5,9 @@ description = "Extends Hypothesis to add fully automatic testing of type annotat
 authors = ["Timothy Crosley <timothy.crosley@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+include = [
+    { path = "tests", format = "sdist" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.6"
