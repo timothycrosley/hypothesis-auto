@@ -13,6 +13,7 @@ from typing import (
     get_type_hints,
 )
 
+from hypothesis import given, settings
 from hypothesis.strategies import SearchStrategy, builds, just
 from pydantic import BaseModel
 
@@ -122,8 +123,16 @@ def auto_parameters(
     pass_along_variables.__annotations__ = getattr(auto_function_, "__annotations__", {})
     strategy = builds(pass_along_variables, *strategy_args, **strategy_kwargs)
 
-    for _ in range(auto_limit_):
-        yield strategy.example()
+    # Note: this function might appear in tracebacks,
+    # and we want users to know that they can ignore it.
+    @given(strategy)
+    @settings(max_examples=auto_limit_)
+    def _example_generating_inner_function(ex):
+        examples.append(ex)
+
+    examples: List[Parameters] = []
+    _example_generating_inner_function()
+    yield from examples
 
 
 def auto_test_cases(
