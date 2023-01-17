@@ -14,7 +14,7 @@ def auto_pytest(
     auto_runs_: int = 50,
     auto_verify_: Optional[Callable[[Scenario], Any]] = None,
     **kwargs,
-) -> None:
+) -> Callable:
     """A decorator that marks a parameterized pytest function passing along a callable test case.
     The function should take a `test_case` parameter.
 
